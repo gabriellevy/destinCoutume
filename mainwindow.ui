@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1090</width>
+    <height>636</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1031</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="commandementTab">
+     <attribute name="title">
+      <string>SaisieCmdt</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>741</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLineEdit" name="titreCmdt"/>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Domaine de loi divine</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QComboBox" name="comBoxDomaineLoi"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="texteCmdt"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ajouterCmdt">
+           <property name="text">
+            <string>Ajouter le commandement</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Caracs de coutume</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_1">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_1"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_1"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_2">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_2"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_2"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_3">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_3"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_3"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_4">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_4"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_4"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_5">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_5"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_5"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_6">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_6"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_6"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_7">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_7"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_7"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="CaracCoutume_8">
+            <item>
+             <widget class="QComboBox" name="cb_CaracCoutume_8"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="val_CaracCoutume_8"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
