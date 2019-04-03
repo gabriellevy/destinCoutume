@@ -7,7 +7,7 @@
 class Peuple : public DPerso
 {
 public:
-    Peuple(QString id, QString nom, QString description, QString imagePortrait);
+    Peuple(QString imagePortrait);
 };
 
 #endif // PEUPLE_H

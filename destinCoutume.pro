@@ -26,7 +26,8 @@ CONFIG += resources_big
 
 SOURCES += \
         main.cpp \
-    ../destinLib/aventure.cpp \
+    ../destinLib/theme.cpp \
+    ../destinLib/univers.cpp \
     ../destinLib/carac.cpp \
     ../destinLib/choix.cpp \
     ../destinLib/condition.cpp \
@@ -48,7 +49,8 @@ SOURCES += \
     peuple.cpp
 
 HEADERS += \
-    ../destinLib/aventure.h \
+    ../destinLib/theme.h \
+    ../destinLib/univers.h \
     ../destinLib/carac.h \
     ../destinLib/choix.h \
     ../destinLib/condition.h \

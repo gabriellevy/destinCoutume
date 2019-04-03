@@ -13,6 +13,8 @@ public:
 
     virtual void GenererHistoire();
 
+    virtual void GenererThemes();
+
 private:
     void GenererEvtsAccueil();
     virtual void GenererPersos();
