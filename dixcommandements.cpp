@@ -1,5 +1,5 @@
 #include "dixcommandements.h"
-#include "ui_aventure.h"
+#include "ui_univers.h"
 #include "peuple.h"
 
 DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)

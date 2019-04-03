@@ -72,7 +72,7 @@ HEADERS += \
     peuple.h
 
 FORMS += \
-    ../destinLib/aventure.ui \
+    ../destinLib/univers.ui \
     ../destinLib/carac.ui \
     ../destinLib/choix.ui \
     ../destinLib/effet.ui \

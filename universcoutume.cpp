@@ -1,6 +1,6 @@
 #include "universcoutume.h"
 #include "../destinLib/perso.h"
-#include "ui_aventure.h"
+#include "ui_univers.h"
 #include "dixcommandements.h"
 #include <qglobal.h>
 
