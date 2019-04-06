@@ -10,7 +10,7 @@ Peuple::Peuple(QString imagePortrait)
     this->m_Id = this->m_Nom = ((UniversCoutume*)(Univers::ME))->GenererNomPeuple();
 
     // temp test :
-    this->m_CaracsAAfficher.append(ThDomainesDivins::integrite);
+    /*this->m_CaracsAAfficher.append(ThDomainesDivins::integrite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::stabilite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::agressivite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::cruaute);
@@ -19,6 +19,6 @@ Peuple::Peuple(QString imagePortrait)
     this->m_CaracsAAfficher.append(ThDomainesDivins::determination);
     this->m_CaracsAAfficher.append(ThDomainesDivins::cupidite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::integrite);
-    this->m_CaracsAAfficher.append(ThDomainesDivins::marins);
+    this->m_CaracsAAfficher.append(ThDomainesDivins::marins);*/
     // fin temp test
 }

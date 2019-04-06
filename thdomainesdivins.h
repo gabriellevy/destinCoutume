@@ -9,7 +9,7 @@ public:
     ThDomainesDivins();
 
     // intitulés de caracs :
-    static QString integrite;
+    /*static QString integrite;
     static QString stabilite;
     static QString agressivite;
     static QString cruaute;
@@ -17,7 +17,7 @@ public:
     static QString courage;
     static QString determination;
     static QString cupidite;
-    static QString marins;
+    static QString marins;*/
 };
 
 #endif // THDOMAINESDIVINS_H

@@ -2,7 +2,7 @@
 
 ThDomainesDivins::ThDomainesDivins():Theme ("dix_commandements", "Fonctions de base des 10 commandements")
 {
-    Carac* carac_integrite = new Carac("integrite", "Intégrité", "1", "",
+    /*Carac* carac_integrite = new Carac("integrite", "Intégrité", "1", "",
                                         "probablement la plus importante car elle conditionne le fait que votre peuple reste soudé et ne disparaîtra pas au moindre coup dur. Les commandements insistant particulièrement sur le groupe ou sur la résistance aux coups durs amélioreront l'intégrité. Exemples : Les hindouistes, les juifs, les chrétiens, ont une intégrité particulièrement forte.",
                                         MODE_AFFICHAGE::ma_Nombre);
     this->m_CaracsDeBase.push_back(carac_integrite);
@@ -39,10 +39,10 @@ ThDomainesDivins::ThDomainesDivins():Theme ("dix_commandements", "Fonctions de b
                                         MODE_AFFICHAGE::ma_Nombre);
     this->m_CaracsDeBase.push_back(carac_marins);
 
-    //m_Histoire->m_Caracs.append(new Jauge(Run::pv, "PV", 0, 8,8,"", ""));
+    //m_Histoire->m_Caracs.append(new Jauge(Run::pv, "PV", 0, 8,8,"", ""));*/
 }
 
-QString ThDomainesDivins::integrite = "integrite";
+/*QString ThDomainesDivins::integrite = "integrite";
 QString ThDomainesDivins::stabilite = "stabilite";
 QString ThDomainesDivins::agressivite = "agressivite";
 QString ThDomainesDivins::cruaute = "cruaute";
@@ -50,4 +50,4 @@ QString ThDomainesDivins::sociabilite = "sociabilite";
 QString ThDomainesDivins::courage = "courage";
 QString ThDomainesDivins::determination = "determination";
 QString ThDomainesDivins::cupidite = "cupidite";
-QString ThDomainesDivins::marins = "marins";
+QString ThDomainesDivins::marins = "marins";*/

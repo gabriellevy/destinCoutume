@@ -3,14 +3,14 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    m_Db("D:/boulot/QtProjects/Coutume/data/Coutume.db"),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     // chargements de base :
-    m_TousDomainesLoi = m_Db.GetAllDomaineLoi();
-    m_CaracsCoutume = m_Db.GetAllCaracCoutume();
+    m_Db.Initialisation("D:/boulot/QtProjects/Coutume/data/Coutume.db");
+    //m_TousDomainesLoi = m_Db.GetAllDomaineLoi();
+    //m_CaracsCoutume = m_Db.GetAllCaracCoutume();
 
     ChargerInterfaceSaisieCmdt();
 }
