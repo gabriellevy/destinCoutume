@@ -46,7 +46,8 @@ SOURCES += \
     cmdt.cpp \
     universcoutume.cpp \
     dixcommandements.cpp \
-    peuple.cpp
+    peuple.cpp \
+    thdomainesdivins.cpp
 
 HEADERS += \
     ../destinLib/theme.h \
@@ -69,7 +70,8 @@ HEADERS += \
     cmdt.h \
     universcoutume.h \
     dixcommandements.h \
-    peuple.h
+    peuple.h \
+    thdomainesdivins.h
 
 FORMS += \
     ../destinLib/univers.ui \

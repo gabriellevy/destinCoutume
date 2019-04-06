@@ -10,15 +10,10 @@ UniversCoutume::UniversCoutume(ModeAffichage modeAffichage,
                                QString premierEffet)
 : Univers(parent, modeAffichage)
 {
-    m_Perso = new IPerso(ui->persoWidget);
 
-    m_Histoire = new DixCommandements(ui->histoireWidget);
-    this->setWindowTitle("à mettre dans une génération d'histoire");
+    this->AppliquerTheme(QColor(180, 180, 210));
 
-    // positionner l'interface
-    ui->persoWidget->layout()->addWidget(m_Perso);
-    //m_Perso->show();
-    ui->histoireWidget->layout()->addWidget(m_Histoire);
+    this->InitialiserHistoire(new DixCommandements(ui->histoireWidget));
 
     GenererAventure();
 
@@ -39,8 +34,6 @@ UniversCoutume::UniversCoutume(ModeAffichage modeAffichage,
 void UniversCoutume::GenererAventure()
 {
     GenererTousNomsPeuples();
-
-    //GenererCaracs(); // A FAIRE : remplacer par un générer thème j'imagine
 
     m_Histoire->GenererThemes();
 
@@ -99,5 +92,4 @@ QString UniversCoutume::GenererNomPeuple()
 
 void UniversCoutume::GenererCaracs()
 {
-    //m_Histoire->m_Caracs.append(new Jauge(Run::pv, "PV", 0, 8,8,"", ""));
 }

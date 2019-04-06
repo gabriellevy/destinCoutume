@@ -12,6 +12,7 @@ public:
     DixCommandements(QWidget *parent = nullptr);
 
     virtual void GenererHistoire();
+    virtual QString GetTitre();
 
     virtual void GenererThemes();
 
