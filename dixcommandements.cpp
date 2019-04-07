@@ -38,6 +38,8 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
 
             this->GetPersoCourant()->m_CaracsAAfficher.append(id);
         }
+
+        Histoire::ChargerBDD(cheminBDD);
     }
 }
 
@@ -88,8 +90,8 @@ void DixCommandements::GenererPersos()
 
 void DixCommandements::GenererEvtsAccueil()
 {
-    Evt* Debut = AjouterEvt("Debut", "Test début 10 commandements");
+    /*Evt* Debut = AjouterEvt("Debut", "Test début 10 commandements");
     Effet* intro = Debut->AjouterEffetNarration(
                 "On va bientôt choisir des commandements");
-
+*/
 }
