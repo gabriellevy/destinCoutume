@@ -16,6 +16,7 @@ public:
     virtual QString GetTitre();
 
     virtual void GenererThemes();
+    virtual void GenererFonctionsCallback();
 
     // gestion de la BDD
     virtual void ChargerBDD(QString cheminBDD);

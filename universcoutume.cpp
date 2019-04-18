@@ -39,6 +39,8 @@ void UniversCoutume::GenererAventure()
 
     m_Histoire->GenererPersos();
 
+    m_Histoire->GenererFonctionsCallback();
+
     m_Histoire->GenererHistoire();
 
     m_Perso->RafraichirAffichage();

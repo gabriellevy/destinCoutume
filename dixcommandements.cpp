@@ -1,4 +1,5 @@
 #include "dixcommandements.h"
+#include "../destinLib/univers.h"
 #include "ui_univers.h"
 #include "peuple.h"
 #include "thdomainesdivins.h"
@@ -6,6 +7,48 @@
 
 DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
 {
+}
+
+bool testTemp(QVector<QString> caracs, QVector<QString> vals)
+{
+    qDebug() << "RIEN DU TOUT JE TESTE !!!!!!!!!!!!!!!!"<<endl;
+    qDebug() << "Intégrité : "<<Univers::ME->GetHistoire()->GetCaracValue(caracs[0])<<endl;
+    qDebug() << "param à la con : "<<vals[0]<<endl;
+    return true;
+}
+
+/**
+ * @brief cette fonction gère le passage du temps cad elle incrémente la variable temps et teste si il est temps de modifier un commandement
+ * @param caracs la première doit être 'tempsEnMois'
+ * @param vals
+ * @return true si il est temps de choisir/modifier un commandement, false si il faut lancer un nouvel événement
+ */
+bool passageDuTemps(QVector<QString> caracs, QVector<QString> )
+{
+    qDebug() << "passageDuTemps"<<endl;
+    int temps = Carac::AJouterValeurACaracId(caracs[0], 1);
+
+    // pour tester je renvoie true une fois sur deux mais il faudra une formule sérieuse pour ça !
+    return ( temps % 2 == 0);
+}
+
+/**
+ * @brief applique l'effet de tous les commandements aux caracs de coutume du peuple
+ * @param caracs
+ * @param vals
+ * @return
+ */
+bool appliquerCmdts(QVector<QString> , QVector<QString> )
+{
+    qDebug() << "appliquerCmdts"<<endl;
+    return true;
+}
+
+void DixCommandements::GenererFonctionsCallback()
+{
+    this->m_CallbackFunctions["testTemp"] = &testTemp;
+    this->m_CallbackFunctions["appliquerCmdts"] = &appliquerCmdts;
+    this->m_CallbackFunctions["passageDuTemps"] = &passageDuTemps;
 }
 
 void DixCommandements::GenererThemes()
@@ -17,7 +60,7 @@ void DixCommandements::GenererHistoire()
 {
     GenererEvtsAccueil();
 
-    this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/Coutume.db");
+    this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/CoutumeSimple.db");
 }
 
 void DixCommandements::ChargerBDD(QString cheminBDD)
