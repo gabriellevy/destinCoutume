@@ -6,6 +6,8 @@
 
 class Peuple : public DPerso
 {
+private:
+    void AjouterCaracs();
 public:
     Peuple(QString imagePortrait);
 };

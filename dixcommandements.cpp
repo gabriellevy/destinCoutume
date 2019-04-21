@@ -9,14 +9,6 @@ DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
 {
 }
 
-bool testTemp(QVector<QString> caracs, QVector<QString> vals)
-{
-    qDebug() << "RIEN DU TOUT JE TESTE !!!!!!!!!!!!!!!!"<<endl;
-    qDebug() << "Intégrité : "<<Univers::ME->GetHistoire()->GetCaracValue(caracs[0])<<endl;
-    qDebug() << "param à la con : "<<vals[0]<<endl;
-    return true;
-}
-
 /**
  * @brief cette fonction gère le passage du temps cad elle incrémente la variable temps et teste si il est temps de modifier un commandement
  * @param caracs la première doit être 'tempsEnMois'
@@ -25,8 +17,16 @@ bool testTemp(QVector<QString> caracs, QVector<QString> vals)
  */
 bool passageDuTemps(QVector<QString> caracs, QVector<QString> )
 {
-    qDebug() << "passageDuTemps"<<endl;
-    int temps = Carac::AJouterValeurACaracId(caracs[0], 1);
+    /*int temps =*/ Carac::AJouterValeurACaracId(caracs[0], 1);
+    //qDebug() << "passageDuTemps temps : "<<temps<<endl;
+    return true;
+}
+
+bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
+{
+    int temps = Carac::GetCaracValueAsInt(caracs[0]);
+    //qDebug() << "testSiTempsDeChoisirCmdt temps : "<<temps<<endl;
+    //qDebug() << "testSiTempsDeChoisirCmdt ( temps % 2 == 0) : "<<( temps % 2 == 0)<<endl;
 
     // pour tester je renvoie true une fois sur deux mais il faudra une formule sérieuse pour ça !
     return ( temps % 2 == 0);
@@ -40,15 +40,15 @@ bool passageDuTemps(QVector<QString> caracs, QVector<QString> )
  */
 bool appliquerCmdts(QVector<QString> , QVector<QString> )
 {
-    qDebug() << "appliquerCmdts"<<endl;
+    //qDebug() << "appliquerCmdts"<<endl;
     return true;
 }
 
 void DixCommandements::GenererFonctionsCallback()
 {
-    this->m_CallbackFunctions["testTemp"] = &testTemp;
     this->m_CallbackFunctions["appliquerCmdts"] = &appliquerCmdts;
     this->m_CallbackFunctions["passageDuTemps"] = &passageDuTemps;
+    this->m_CallbackFunctions["testSiTempsDeChoisirCmdt"] = &testSiTempsDeChoisirCmdt;
 }
 
 void DixCommandements::GenererThemes()
@@ -60,7 +60,8 @@ void DixCommandements::GenererHistoire()
 {
     GenererEvtsAccueil();
 
-    this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/CoutumeSimple.db");
+    // this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/CoutumeSimple.db");
+    this->ChargerBDD("D:/Mathieu/GitHub/destinCoutume/data/CoutumeSimple.db");
 }
 
 void DixCommandements::ChargerBDD(QString cheminBDD)

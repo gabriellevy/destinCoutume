@@ -9,8 +9,7 @@ Peuple::Peuple(QString imagePortrait)
 
     this->m_Id = this->m_Nom = ((UniversCoutume*)(Univers::ME))->GenererNomPeuple();
 
-    this->m_CaracsAAfficher.append("tempsEnMois");
-
+    this->AjouterCaracs();
     // temp test :
     /*this->m_CaracsAAfficher.append(ThDomainesDivins::integrite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::agressivite);
@@ -22,4 +21,17 @@ Peuple::Peuple(QString imagePortrait)
     this->m_CaracsAAfficher.append(ThDomainesDivins::integrite);
     this->m_CaracsAAfficher.append(ThDomainesDivins::marins);*/
     // fin temp test
+}
+
+void Peuple::AjouterCaracs()
+{
+    Univers::ME->GetHistoire()->m_Caracs.push_back(
+                new Carac(
+                    "tempsEnMois",
+                    "Temps en mois",
+                    "0",
+                    "",
+                    "Temps en mois passé depuis la création du peuple",
+                    MODE_AFFICHAGE::ma_Nombre));
+    this->m_CaracsAAfficher.append("tempsEnMois");
 }
