@@ -47,7 +47,8 @@ SOURCES += \
     universcoutume.cpp \
     dixcommandements.cpp \
     peuple.cpp \
-    thdomainesdivins.cpp
+    thdomainesdivins.cpp \
+    caraccmdt.cpp
 
 HEADERS += \
     ../destinLib/theme.h \
@@ -71,7 +72,8 @@ HEADERS += \
     universcoutume.h \
     dixcommandements.h \
     peuple.h \
-    thdomainesdivins.h
+    thdomainesdivins.h \
+    caraccmdt.h
 
 FORMS += \
     ../destinLib/univers.ui \
@@ -93,7 +95,18 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    images/icones_cmdt/2.png \
+    images/icones_cmdt/3.png \
+    images/icones_cmdt/4.png \
+    images/icones_cmdt/5.png \
+    images/icones_cmdt/6.png \
+    images/icones_cmdt/7.png \
+    images/icones_cmdt/8.png \
+    images/icones_cmdt/9.png \
+    images/icones_cmdt/10.png \
+    images/icones_cmdt/11.png \
+    images/icones_cmdt/12.png
 
 RESOURCES += \
     dix_commandements.qrc

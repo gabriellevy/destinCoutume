@@ -3,8 +3,10 @@
 #include <QString>
 #include <QVector>
 
+class Cmdt;
+
 struct DomaineLoi {
-    int m_Id;
+    int m_BddId;
     QString m_Intitule;
     QString m_Description;
 };
@@ -18,6 +20,16 @@ struct CaracCoutume {
 struct EffetSurCaracCoutume {
     CaracCoutume m_CaracCoutume;
     int m_Val;
+};
+
+static int s_EmplacementIndex = 0;
+struct EmplacementCmdt {
+    EmplacementCmdt(DomaineLoi* domaine):m_DomaineLoi(domaine), m_Index(++s_EmplacementIndex) {
+    }
+
+    DomaineLoi* m_DomaineLoi;
+    int m_Index;
+    Cmdt* cmdt;
 };
 
 class Cmdt

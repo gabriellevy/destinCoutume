@@ -5,6 +5,8 @@
 #include "../destinLib/histoire.h"
 #include "cmdt.h"
 
+class Peuple;
+
 class DixCommandements : public Histoire
 {
     Q_OBJECT
@@ -19,13 +21,15 @@ public:
     virtual void GenererThemes();
     virtual void GenererFonctionsCallback();
 
-    void AjouterDomaineLoi(QString intitule, QString description);
-    void ChargerDomaineLoi();
+    Peuple* GetPeuple();
+
     // gestion de la BDD
     virtual void ChargerBDD(QString cheminBDD);
     void ChargerCaracCoutume();
-    QList<DomaineLoi*>  m_TousDomainesLoi;
-    QList<CaracCoutume*> m_CaracsCoutume;
+    void ChargerDomainesLoi();
+    DomaineLoi* AjouterDomaineLoi(QString intitule, QString description, int bddId, int emplacements_initiaux);
+    QVector<DomaineLoi*> m_TousDomainesLoi;
+    QVector<CaracCoutume*> m_CaracsCoutume;
 
 private:
     void GenererEvtsAccueil();

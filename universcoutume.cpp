@@ -10,7 +10,6 @@ UniversCoutume::UniversCoutume(ModeAffichage modeAffichage,
                                QString premierEffet)
 : Univers(parent, modeAffichage)
 {
-
     this->AppliquerTheme(QColor(180, 180, 210));
 
     this->InitialiserHistoire(new DixCommandements(ui->histoireWidget));
@@ -94,4 +93,14 @@ QString UniversCoutume::GenererNomPeuple()
 
 void UniversCoutume::GenererCaracs()
 {
+}
+
+DixCommandements* UniversCoutume::GetHistoireDixCommandement()
+{
+    DixCommandements* dixcom = dynamic_cast<DixCommandements*>(this->m_Histoire);
+}
+
+QVector<DomaineLoi*> UniversCoutume::GetTousDomainesLoi()
+{
+    return this->GetHistoireDixCommandement()->m_TousDomainesLoi;
 }

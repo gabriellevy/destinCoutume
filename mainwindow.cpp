@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dixcommandements.h"
+#include "universcoutume.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,12 +17,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ChargerInterfaceSaisieCmdt();
 }
 
+UniversCoutume* MainWindow::GetUniversCoutume()
+{
+    return static_cast<UniversCoutume*>(Univers::ME);
+}
+
 
 void MainWindow::ChargerInterfaceSaisieCmdt()
 {
-    foreach(DomaineLoi it, m_TousDomainesLoi)
+    foreach(DomaineLoi* it, GetUniversCoutume()->GetTousDomainesLoi())
     {
-        ui->comBoxDomaineLoi->addItem(it.m_Intitule);
+        ui->comBoxDomaineLoi->addItem(it->m_Intitule);
     }
 
     foreach(CaracCoutume it, m_CaracsCoutume)

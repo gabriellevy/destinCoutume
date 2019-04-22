@@ -6,6 +6,8 @@
 #include "../destinLib/univers.h"
 #include "cmdt.h"
 
+class DixCommandements;
+
 class UniversCoutume : public Univers
 {
     Q_OBJECT
@@ -26,6 +28,9 @@ public:
                    QWidget *parent = nullptr, QString premierEvt = "", QString premierEffet = "");
 
     QString GenererNomPeuple();
+
+    DixCommandements* GetHistoireDixCommandement();
+    QVector<DomaineLoi*> GetTousDomainesLoi();
 
 
 };

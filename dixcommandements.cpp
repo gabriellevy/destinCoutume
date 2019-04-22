@@ -7,7 +7,6 @@
 
 DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
 {
-    ME = this;
 }
 
 /**
@@ -61,8 +60,13 @@ void DixCommandements::GenererHistoire()
 {
     GenererEvtsAccueil();
 
-    // this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/CoutumeSimple.db");
-    this->ChargerBDD("D:/Mathieu/GitHub/destinCoutume/data/CoutumeSimple.db");
+    this->ChargerBDD("C:/Users/Mathieu/Documents/GitHub/destinCoutume/data/CoutumeSimple.db");
+    //this->ChargerBDD("D:/Mathieu/GitHub/destinCoutume/data/CoutumeSimple.db");
+}
+
+Peuple* DixCommandements::GetPeuple()
+{
+    return static_cast<Peuple*>(this->GetPersoCourant());
 }
 
 void DixCommandements::ChargerBDD(QString cheminBDD)
@@ -70,7 +74,7 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
     if ( this->m_Db.Initialisation(cheminBDD) )
     {
         // chargements de base :
-        this->ChargerDomaineLoi();
+        this->ChargerDomainesLoi();
         this->ChargerCaracCoutume();
 
         // les caracs de coutume sont chargées en tant que caracs "normales" de l'histoire (et commencent à valeur 0)
@@ -81,42 +85,48 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
             Carac* carac = new Carac(id, cCout->m_Intitule, "0", "", cCout->m_Description, MODE_AFFICHAGE::ma_Nombre);
             this->m_Caracs.push_back(carac);
 
-            this->GetPersoCourant()->m_CaracsAAfficher.append(id);
+            //this->GetPersoCourant()->m_CaracsAAfficher.append(id);
         }
 
         Histoire::ChargerBDD(cheminBDD);
     }
 }
 
-void DixCommandements::AjouterDomaineLoi(QString intitule, QString description)
+DomaineLoi* DixCommandements::AjouterDomaineLoi(QString intitule, QString description, int bddId, int emplacements_initiaux)
 {
     DomaineLoi* dl = new DomaineLoi();
-    dl->m_Intitule = "Pouvoir";
-    dl->m_Description = "force, domination, charité, attitude envers les plus faibles";
+    dl->m_Intitule = intitule;
+    dl->m_Description = description;
+    dl->m_BddId = bddId;
     m_TousDomainesLoi.push_back(dl);
+    return dl;
 }
 
-void DixCommandements::ChargerDomaineLoi()
+void DixCommandements::ChargerDomainesLoi()
 {
-    this->AjouterDomaineLoi("Pouvoir",
-                            "force, domination, charité, attitude envers les plus faibles");
-
-
-    /*
-     * j'ai viré le chargement de ces domaines par la bdd : peu intéressant
-     * QSqlQuery query("SELECT * FROM DomaineLoi");
+    QSqlQuery query("SELECT * FROM DomaineLoi");
     while (query.next())
     {
-       QString intitule = query.value("intitule").toString();
-       QString description = query.value("description").toString();
-       int id = query.value("id").toInt();
-       DomaineLoi* dl = new DomaineLoi();
-       dl->m_Intitule = intitule;
-       dl->m_Description = description;
-       dl->m_Id = id;
-       m_TousDomainesLoi.push_back(dl);
+        DomaineLoi* dom = this->AjouterDomaineLoi(
+                    query.value("intitule").toString(),
+                    query.value("description").toString(),
+                    query.value("id").toInt(),
+                    query.value("emplacements_initiaux").toInt()
+                    );
+
+        // création des emplacements de commandement associés si il y en a :
+        if (dom->m_Intitule != "Métaphysique")
+        {
+            this->GetPeuple()->AjouterEmplacementCmdt(dom);
+            if (dom->m_Intitule == "Pouvoir" ||
+                    dom->m_Intitule == "Moeurs" ||
+                    dom->m_Intitule == "Rituels")
+            {
+                this->GetPeuple()->AjouterEmplacementCmdt(dom);
+            }
+        }
     }
-    */
+
 }
 
 

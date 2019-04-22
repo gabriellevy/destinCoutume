@@ -1,5 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>images/perso/peuple.jpg</file>
+        <file>images/icones_cmdt/1.png</file>
+        <file>images/icones_cmdt/2.png</file>
+        <file>images/icones_cmdt/3.png</file>
+        <file>images/icones_cmdt/4.png</file>
+        <file>images/icones_cmdt/5.png</file>
+        <file>images/icones_cmdt/6.png</file>
+        <file>images/icones_cmdt/7.png</file>
+        <file>images/icones_cmdt/8.png</file>
+        <file>images/icones_cmdt/9.png</file>
+        <file>images/icones_cmdt/10.png</file>
+        <file>images/icones_cmdt/11.png</file>
+        <file>images/icones_cmdt/12.png</file>
     </qresource>
 </RCC>

@@ -5,6 +5,8 @@
 #include "../destinLib/dbmanager.h"
 #include "cmdt.h"
 
+class UniversCoutume;
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,6 +26,7 @@ private:
     Ui::MainWindow *ui;
 
     void ChargerInterfaceSaisieCmdt();
+    UniversCoutume* GetUniversCoutume();
 };
 
 #endif // MAINWINDOW_H

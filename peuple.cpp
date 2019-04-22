@@ -2,6 +2,7 @@
 #include "dixcommandements.h"
 #include "universcoutume.h"
 #include "thdomainesdivins.h"
+#include "caraccmdt.h"
 
 Peuple::Peuple(QString imagePortrait)
 {
@@ -36,7 +37,14 @@ void Peuple::AjouterCaracs()
     this->m_CaracsAAfficher.append("tempsEnMois");
 }
 
-void Peuple::InitialiserEmplacementsCmdts()
+
+void Peuple::AjouterEmplacementCmdt(DomaineLoi* domaine)
 {
-    m_Cmdts.push_back(new EmplacementCmdt())
+    EmplacementCmdt* empl = new EmplacementCmdt(domaine);
+    this->m_Cmdts.push_back(empl);
+
+    CaracCmdt* carac = new CaracCmdt(empl);
+    Univers::ME->GetHistoire()->m_Caracs.push_back(carac);
+
+    this->m_CaracsAAfficher.append(carac->m_DataCarac.m_Id);
 }
