@@ -7,7 +7,7 @@ Peuple::Peuple(QString imagePortrait)
 {
     m_ImagePortrait.load(imagePortrait);
 
-    this->m_Id = this->m_Nom = ((UniversCoutume*)(Univers::ME))->GenererNomPeuple();
+    this->m_Id = this->m_Nom = (static_cast<UniversCoutume*>(Univers::ME))->GenererNomPeuple();
 
     this->AjouterCaracs();
     // temp test :
@@ -34,4 +34,9 @@ void Peuple::AjouterCaracs()
                     "Temps en mois passé depuis la création du peuple",
                     MODE_AFFICHAGE::ma_Nombre));
     this->m_CaracsAAfficher.append("tempsEnMois");
+}
+
+void Peuple::InitialiserEmplacementsCmdts()
+{
+    m_Cmdts.push_back(new EmplacementCmdt())
 }

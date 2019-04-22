@@ -18,7 +18,6 @@ public:
     ~MainWindow();
 
     DbManager m_Db;
-    QList<DomaineLoi>  m_TousDomainesLoi;
     QList<CaracCoutume> m_CaracsCoutume;
 
 private:

@@ -4,6 +4,7 @@
 
 #include <QWidget>
 #include "../destinLib/univers.h"
+#include "cmdt.h"
 
 class UniversCoutume : public Univers
 {
@@ -25,6 +26,8 @@ public:
                    QWidget *parent = nullptr, QString premierEvt = "", QString premierEffet = "");
 
     QString GenererNomPeuple();
+
+
 };
 
 #endif // UNIVERSCOUTUME_H

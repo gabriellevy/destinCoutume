@@ -11,6 +11,7 @@ class DixCommandements : public Histoire
 
 public:
     DixCommandements(QWidget *parent = nullptr);
+    static DixCommandements* ME;
 
     virtual void GenererHistoire();
     virtual QString GetTitre();
@@ -18,9 +19,10 @@ public:
     virtual void GenererThemes();
     virtual void GenererFonctionsCallback();
 
+    void AjouterDomaineLoi(QString intitule, QString description);
+    void ChargerDomaineLoi();
     // gestion de la BDD
     virtual void ChargerBDD(QString cheminBDD);
-    void ChargerDomaineLoi();
     void ChargerCaracCoutume();
     QList<DomaineLoi*>  m_TousDomainesLoi;
     QList<CaracCoutume*> m_CaracsCoutume;

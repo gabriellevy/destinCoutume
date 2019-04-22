@@ -7,6 +7,7 @@
 
 DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
 {
+    ME = this;
 }
 
 /**
@@ -87,9 +88,23 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
     }
 }
 
+void DixCommandements::AjouterDomaineLoi(QString intitule, QString description)
+{
+    DomaineLoi* dl = new DomaineLoi();
+    dl->m_Intitule = "Pouvoir";
+    dl->m_Description = "force, domination, charité, attitude envers les plus faibles";
+    m_TousDomainesLoi.push_back(dl);
+}
+
 void DixCommandements::ChargerDomaineLoi()
 {
-    QSqlQuery query("SELECT * FROM DomaineLoi");
+    this->AjouterDomaineLoi("Pouvoir",
+                            "force, domination, charité, attitude envers les plus faibles");
+
+
+    /*
+     * j'ai viré le chargement de ces domaines par la bdd : peu intéressant
+     * QSqlQuery query("SELECT * FROM DomaineLoi");
     while (query.next())
     {
        QString intitule = query.value("intitule").toString();
@@ -101,6 +116,7 @@ void DixCommandements::ChargerDomaineLoi()
        dl->m_Id = id;
        m_TousDomainesLoi.push_back(dl);
     }
+    */
 }
 
 
