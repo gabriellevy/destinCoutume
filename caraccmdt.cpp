@@ -11,8 +11,18 @@ CaracCmdt::CaracCmdt(EmplacementCmdt* emplacementCmdt, QWidget *parent)
     m_DataCarac.m_Id = "Cmdt" + QString::number(index);
     m_DataCarac.m_Valeur = "Pas de valeur encore faire un accesseur malin";
     m_DataCarac.m_Intitule = "";
-    m_DataCarac.m_Description = "Pas de description encore faire un accesseur malin";
 
     QString chemin = ":/images/icones_cmdt/" + QString::number(index) + ".png";
     m_Img.load(chemin);
+}
+
+
+QString CaracCmdt::GetCaracDescription()
+{
+    QString domaineStr = "Domaine " + m_EmplacementCmdt->m_DomaineLoi->m_Intitule;
+    if ( m_EmplacementCmdt->cmdt != nullptr)
+        return m_EmplacementCmdt->cmdt->m_Intitule +
+                "\n ( " + domaineStr + " )";
+    else return domaineStr +
+            "\nPas de commandement affecté encore";
 }

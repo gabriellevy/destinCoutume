@@ -88,6 +88,8 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
             //this->GetPersoCourant()->m_CaracsAAfficher.append(id);
         }
 
+        this->ChargerCmdts();
+
         Histoire::ChargerBDD(cheminBDD);
     }
 }
@@ -100,6 +102,45 @@ DomaineLoi* DixCommandements::AjouterDomaineLoi(QString intitule, QString descri
     dl->m_BddId = bddId;
     m_TousDomainesLoi.push_back(dl);
     return dl;
+}
+
+Cmdt* DixCommandements::AjouterCmdtBdd(QString intitule, QString description, int bddid, int id_domaine_loi)
+{
+    Cmdt* cmdt = new Cmdt();
+    cmdt->m_Intitule = intitule;
+    cmdt->m_Description = description;
+    cmdt->m_BddId = bddid;
+
+    // récupérer le domaine de loi associé
+    for ( DomaineLoi* dom: this->m_TousDomainesLoi)
+    {
+        if ( dom->m_BddId == id_domaine_loi) {
+            cmdt->m_DomaineLoi = dom;
+            break;
+        }
+    }
+    // et les effets sur carac coutume associés :
+    cmdt->AjouterEffetsSurCaracCoutumeBdd();
+
+    this->m_Cmdts.push_back(cmdt);
+    return cmdt;
+}
+
+void DixCommandements::ChargerCmdts()
+{
+    QSqlQuery query("SELECT * FROM Cmdt");
+    while (query.next())
+    {
+        Cmdt* cmdt = this->AjouterCmdtBdd(
+                    query.value("intitule").toString(),
+                    query.value("description").toString(),
+                    query.value("id").toInt(),
+                    query.value("id_domaine_loi").toInt()
+                    );
+
+        // test
+        // this->GetPeuple()->AppliquerCmdt(cmdt, 0);
+    }
 }
 
 void DixCommandements::ChargerDomainesLoi()
@@ -126,7 +167,6 @@ void DixCommandements::ChargerDomainesLoi()
             }
         }
     }
-
 }
 
 

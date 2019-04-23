@@ -13,6 +13,10 @@ private:
 public:
     Peuple(QString imagePortrait);
     void AjouterEmplacementCmdt(DomaineLoi* domaine);
+    /**
+     * @brief applique le commandement dans l'emplacement d'index
+     */
+    void AppliquerCmdt(Cmdt* cmdt, int index);
 };
 
 #endif // PEUPLE_H

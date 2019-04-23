@@ -38,6 +38,11 @@ void Peuple::AjouterCaracs()
 }
 
 
+void Peuple::AppliquerCmdt(Cmdt* cmdt, int index)
+{
+    this->m_Cmdts[index]->cmdt = cmdt;
+}
+
 void Peuple::AjouterEmplacementCmdt(DomaineLoi* domaine)
 {
     EmplacementCmdt* empl = new EmplacementCmdt(domaine);

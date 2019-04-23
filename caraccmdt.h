@@ -13,6 +13,8 @@ public:
     explicit CaracCmdt(EmplacementCmdt* emplacementCmdt, QWidget *parent = nullptr);
 
     EmplacementCmdt* m_EmplacementCmdt;
+
+    virtual QString GetCaracDescription();
 };
 
 #endif // CARACCMDT_H
