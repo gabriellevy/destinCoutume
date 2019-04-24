@@ -13,7 +13,7 @@ struct DomaineLoi {
 };
 
 struct CaracCoutume {
-    int m_Id;
+    int m_BddId;
     QString m_Intitule;
     QString m_Description;
 };
@@ -40,13 +40,16 @@ class Cmdt
 public:
     explicit Cmdt();
 
-    int m_BddId;
     QString m_Intitule;
     QString m_Description;
     QVector<EffetSurCaracCoutume*> m_EffetsSurCaracCoutume;// liste d'améliorations de caracs de coutume
     DomaineLoi* m_DomaineLoi;// id de domaine de loi divine associé
 
+    // gestion de la BDD
+    int m_BddId;
     void AjouterEffetsSurCaracCoutumeBdd();
+
+    // accesseurs de convénience
     DixCommandements* GetDixCommandements();
 
 };

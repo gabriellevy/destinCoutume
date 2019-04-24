@@ -3,6 +3,7 @@
 #include "ui_univers.h"
 #include "peuple.h"
 #include "thdomainesdivins.h"
+#include "cmdt.h"
 #include <QDebug>
 
 DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
@@ -40,7 +41,20 @@ bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
  */
 bool appliquerCmdts(QVector<QString> , QVector<QString> )
 {
-    //qDebug() << "appliquerCmdts"<<endl;
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+
+    // remise à 0 de toutes les caracs coutume :
+    for ( CaracCoutume* cCout: dixCmdts->m_CaracsCoutume) {
+        Carac::SetValeurACaracId(cCout->m_Intitule, "0");
+    }
+
+    // application de tous les effets sur carac coutume des cmdts :
+    for ( Cmdt* cmdt: dixCmdts->m_Cmdts) {
+        for ( EffetSurCaracCoutume* effet: cmdt->m_EffetsSurCaracCoutume) {
+            Carac::AJouterValeurACaracId(effet->m_CaracCoutume->m_Intitule, effet->m_Val);
+        }
+    }
+
     return true;
 }
 
@@ -129,6 +143,7 @@ Cmdt* DixCommandements::AjouterCmdtBdd(QString intitule, QString description, in
 void DixCommandements::ChargerCmdts()
 {
     QSqlQuery query("SELECT * FROM Cmdt");
+    int index = 0;
     while (query.next())
     {
         Cmdt* cmdt = this->AjouterCmdtBdd(
@@ -139,7 +154,12 @@ void DixCommandements::ChargerCmdts()
                     );
 
         // test
-        // this->GetPeuple()->AppliquerCmdt(cmdt, 0);
+        if ( index == 0)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 0);
+        else if ( index == 1)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 1);
+
+        index++;
     }
 }
 
@@ -182,7 +202,7 @@ void DixCommandements::ChargerCaracCoutume()
        CaracCoutume* car = new CaracCoutume();
        car->m_Intitule = intitule;
        car->m_Description = description;
-       car->m_Id = id;
+       car->m_BddId = id;
        m_CaracsCoutume.push_back(car);
     }
 }

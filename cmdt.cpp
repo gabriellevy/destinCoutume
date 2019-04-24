@@ -23,7 +23,7 @@ EffetSurCaracCoutume* Cmdt::AjouterUnEffetSurCaracCoutume(int val, int id_carac_
     // récupérer la bonne carac coutume et l'associer :
     for ( CaracCoutume* cCout: GetDixCommandements()->m_CaracsCoutume)
     {
-        if ( cCout->m_Id == id_carac_coutume) {
+        if ( cCout->m_BddId == id_carac_coutume) {
             effet->m_CaracCoutume = cCout;
             break;
         }
