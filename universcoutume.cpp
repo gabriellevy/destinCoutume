@@ -34,6 +34,14 @@ void UniversCoutume::GenererAventure()
 {
     GenererTousNomsPeuples();
 
+    GenererTousNomsVilles();
+
+    GenererTousNomsRegions();
+
+    GenererTousNomsMonts();
+
+    GenererTousNomsFleuves();
+
     m_Histoire->GenererThemes();
 
     m_Histoire->GenererPersos();
@@ -45,6 +53,38 @@ void UniversCoutume::GenererAventure()
     m_Perso->RafraichirAffichage();
 }
 
+void UniversCoutume::GenererTousNomsRegions()
+{
+    m_Regions.push_back("Péloponèse");
+    m_Regions.push_back("Hellespond");
+}
+
+void UniversCoutume::GenererTousNomsMonts()
+{
+    m_Monts.push_back("Tmolos");
+}
+
+void UniversCoutume::GenererTousNomsFleuves()
+{
+    m_Fleuves.push_back("Halys");
+    m_Fleuves.push_back("Tibre");
+    m_Fleuves.push_back("Euphrate");
+}
+
+void UniversCoutume::GenererTousNomsVilles()
+{
+    m_Villes.push_back("Delphes");
+    m_Villes.push_back("Pytho");
+    m_Villes.push_back("Pallacia");
+    m_Villes.push_back("Scylacé");
+    m_Villes.push_back("Athènes");
+    m_Villes.push_back("Sparte");
+    m_Villes.push_back("Mégare");
+    m_Villes.push_back("Nisée");
+    m_Villes.push_back("Marathon");
+    m_Villes.push_back("Sarde");
+    m_Villes.push_back("Babyllone");
+}
 void UniversCoutume::GenererTousNomsPeuples()
 {
     m_PeuplesPays["Lacédémoniens"] = "Sparte";
@@ -78,6 +118,43 @@ void UniversCoutume::GenererTousNomsPeuples()
     m_PeuplesPays["Cattes"] = "";
     m_PeuplesPays["Chérusques"] = "";
     m_PeuplesPays["Cananéens"] = "";
+    m_PeuplesPays["Ciliciens"] = "Cilicie";
+    m_PeuplesPays["Lyciens"] = "Lycie";
+    m_PeuplesPays["Ioniens"] = "Ionie";
+    m_PeuplesPays["Cimmériens"] = "Cimmérie";
+    m_PeuplesPays["Hittites"] = "";
+    m_PeuplesPays["Corinthiens"] = "Corinthe";
+    m_PeuplesPays["Lydiens"] = "Lydie";
+    m_PeuplesPays["Phrygiens"] = "Phrygie";
+    m_PeuplesPays["Mysiens"] = "";
+    m_PeuplesPays["Samiens"] = "Samos";
+    m_PeuplesPays["Mariandynes"] = "";
+    m_PeuplesPays["Chalybes"] = "";
+    m_PeuplesPays["Paphlagoniens"] = "";
+    m_PeuplesPays["Thraces"] = "Thrace";
+    m_PeuplesPays["Thymiens"] = "";
+    m_PeuplesPays["Bithyniens"] = "Bythinie";
+    m_PeuplesPays["Cariens"] = "Carie";
+    m_PeuplesPays["Doriens"] = "";
+    m_PeuplesPays["Syriens"] = "Syrie";
+    m_PeuplesPays["Éoliens"] = "Éolie";
+    m_PeuplesPays["Pamphyliens"] = "";
+    m_PeuplesPays["Éphésiens"] = "Éphèse";
+    m_PeuplesPays["Pélasge"] = "";
+    m_PeuplesPays["Crestoniates"] = "";
+    m_PeuplesPays["Naxiens"] = "Naxos";
+    m_PeuplesPays["Tégéates"] = "";
+    m_PeuplesPays["Arcadiens"] = "Arcadie";
+    m_PeuplesPays["Matiènes"] = "";
+    m_PeuplesPays["Phrygiens"] = "Phrygie";
+    m_PeuplesPays["Paphlagoniens"] = "Paphlagonie";
+    m_PeuplesPays["Scythes"] = "Scythie";
+    m_PeuplesPays["Telmessiens"] = "";
+    m_PeuplesPays["Mèdes"] = "Médie";
+    m_PeuplesPays["Parétacènes"] = "";
+    m_PeuplesPays["Arizantes"] = "";
+    m_PeuplesPays["Boudiens"] = "";
+    m_PeuplesPays["Mages"] = "";
 
     for ( QString key : m_PeuplesPays.keys())
     {
@@ -87,7 +164,7 @@ void UniversCoutume::GenererTousNomsPeuples()
 
 QString UniversCoutume::GenererNomPeuple()
 {
-    qsrand(qrand());
+    qsrand(static_cast<unsigned int>(qrand()));
     return m_PeuplesKeys[qrand() % (m_PeuplesKeys.length() + 1)];
 }
 
@@ -97,7 +174,7 @@ void UniversCoutume::GenererCaracs()
 
 DixCommandements* UniversCoutume::GetHistoireDixCommandement()
 {
-    DixCommandements* dixcom = dynamic_cast<DixCommandements*>(this->m_Histoire);
+    return dynamic_cast<DixCommandements*>(this->m_Histoire);
 }
 
 QVector<DomaineLoi*> UniversCoutume::GetTousDomainesLoi()

@@ -10,17 +10,86 @@ DixCommandements::DixCommandements(QWidget *parent):Histoire(parent)
 {
 }
 
-/**
- * @brief cette fonction gère le passage du temps cad elle incrémente la variable temps et teste si il est temps de modifier un commandement
- * @param caracs la première doit être 'tempsEnMois'
- * @param vals
- * @return true si il est temps de choisir/modifier un commandement, false si il faut lancer un nouvel événement
- */
+
+// cette fonction peut être mise dans la bdd si elle ne fait que ça
 bool passageDuTemps(QVector<QString> caracs, QVector<QString> )
 {
     /*int temps =*/ Carac::AJouterValeurACaracId(caracs[0], 1);
     //qDebug() << "passageDuTemps temps : "<<temps<<endl;
     return true;
+}
+
+/**
+ * @brief testeSiEmplacementCmdtLibre
+ * @return true si le peuple a au moins un emplacement de commandement libre
+ */
+bool testeSiEmplacementCmdtLibre(QVector<QString>, QVector<QString>)
+{
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+
+    return dixCmdts->GetPeuple()->AEmplacementLibre();
+}
+
+/**
+ * @brief appelée quand le joueur a sélectionné le cmdt d'id bddId
+ * @param bddIdCmdt
+ * @return
+ */
+bool selectionnerCmdt(QVector<QString> , QVector<QString> bddIdCmdt)
+{
+    qDebug() << "selectionnerCmdt ";
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+    Peuple* peuple = dixCmdts->GetPeuple();
+
+    Cmdt* nouv_cmdt = dixCmdts->GetCmdtViaBddId(bddIdCmdt[0].toInt());
+
+    peuple->AppliquerCmdt(nouv_cmdt);
+}
+
+/**
+ * @brief génère la liste de commandments d=parmi lesquelle le joueur devra choisir
+ * @param caracs
+ * @return
+ */
+bool choisirCmdt(QVector<QString> caracs, QVector<QString> )
+{
+    qDebug() << "choisirCmdt ";
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+
+    Effet* effetCourant = Univers::ME->GetHistoire()->EffetActuel();
+    effetCourant->SupprimerTousLesChoix();
+
+    int nb_choix_cmdt = 6;
+    int index = 0;
+    while ( nb_choix_cmdt > 0 && index < dixCmdts->m_Cmdts.length())
+    {
+        Cmdt* choix_cmdt = dixCmdts->m_Cmdts[ qrand()%dixCmdts->m_Cmdts.length()];
+        // vérifier que ce cmdt n'est pas déjà possédé :
+        bool a_deja = dixCmdts->GetPeuple()->ACeCommandement(choix_cmdt);
+        if (!a_deja) {
+            bool est_deja_dans_les_choix = false;
+            for ( Choix* choix: effetCourant->m_Choix) {
+                if ( choix->m_Text == choix_cmdt->m_Intitule) {
+                    est_deja_dans_les_choix = true;
+                    break;
+                }
+            }
+
+            if ( !est_deja_dans_les_choix ) {
+                Choix* choix = effetCourant->AjouterChoixVide();
+                choix->m_Text = choix_cmdt->m_Intitule;
+                AppelCallback* appel = new AppelCallback();
+                appel->m_NomFonction = "selectionnerCmdt";
+                appel->m_ArgumentsParValeur.push_back(QString::number(choix_cmdt->m_BddId));
+                choix->m_FonctionsAppellees.push_back(appel);
+                nb_choix_cmdt--;
+            }
+        }
+        index++;
+    }
+
+    //int nbChoixCmdts
+    //Choix*
 }
 
 bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
@@ -32,6 +101,9 @@ bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
     // pour tester je renvoie true une fois sur deux mais il faudra une formule sérieuse pour ça !
     return ( temps % 2 == 0);
 }
+
+
+
 
 /**
  * @brief applique l'effet de tous les commandements aux caracs de coutume du peuple
@@ -58,11 +130,27 @@ bool appliquerCmdts(QVector<QString> , QVector<QString> )
     return true;
 }
 
+
+Cmdt* DixCommandements::GetCmdtViaBddId(int bdd_id)
+{
+    for ( Cmdt* cmdt: this->m_Cmdts) {
+        if ( cmdt->m_BddId == bdd_id)
+            return cmdt;
+    }
+
+    Q_ASSERT_X(true, "aucun cmdt de ce bdd id n'est trouvable", "DixCommandements::GetCmdtViaBddId");
+
+    return nullptr;
+}
+
 void DixCommandements::GenererFonctionsCallback()
 {
     this->m_CallbackFunctions["appliquerCmdts"] = &appliquerCmdts;
     this->m_CallbackFunctions["passageDuTemps"] = &passageDuTemps;
     this->m_CallbackFunctions["testSiTempsDeChoisirCmdt"] = &testSiTempsDeChoisirCmdt;
+    this->m_CallbackFunctions["choisirCmdt"] = &choisirCmdt;
+    this->m_CallbackFunctions["testeSiEmplacementCmdtLibre"] = &testeSiEmplacementCmdtLibre;
+    this->m_CallbackFunctions["selectionnerCmdt"] = &selectionnerCmdt;
 }
 
 void DixCommandements::GenererThemes()
@@ -146,7 +234,7 @@ void DixCommandements::ChargerCmdts()
     int index = 0;
     while (query.next())
     {
-        Cmdt* cmdt = this->AjouterCmdtBdd(
+        /*Cmdt* cmdt =*/ this->AjouterCmdtBdd(
                     query.value("intitule").toString(),
                     query.value("description").toString(),
                     query.value("id").toInt(),
@@ -154,10 +242,10 @@ void DixCommandements::ChargerCmdts()
                     );
 
         // test
-        if ( index == 0)
+        /*if ( index == 0)
             this->GetPeuple()->AppliquerCmdt(cmdt, 0);
         else if ( index == 1)
-            this->GetPeuple()->AppliquerCmdt(cmdt, 1);
+            this->GetPeuple()->AppliquerCmdt(cmdt, 1);*/
 
         index++;
     }

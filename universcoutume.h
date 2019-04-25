@@ -15,7 +15,15 @@ private:
     // noms de peuple et éventuellement nom de pays associé
     QMap<QString, QString> m_PeuplesPays;
     QVector<QString> m_PeuplesKeys;
+    QVector<QString> m_Villes;
+    QVector<QString> m_Regions;
+    QVector<QString> m_Fleuves;
+    QVector<QString> m_Monts;
     void GenererTousNomsPeuples();
+    void GenererTousNomsVilles();
+    void GenererTousNomsRegions();
+    void GenererTousNomsFleuves();
+    void GenererTousNomsMonts();
 
 protected:
     // pour les aventures qui n'utilisent pas le json mais du code :surclasser aventure et développer cette fonction
@@ -27,6 +35,7 @@ public:
     UniversCoutume(ModeAffichage modeAffichage = ModeAffichage::ema_Jeu,
                    QWidget *parent = nullptr, QString premierEvt = "", QString premierEffet = "");
 
+    // données génériques d'historique
     QString GenererNomPeuple();
 
     DixCommandements* GetHistoireDixCommandement();

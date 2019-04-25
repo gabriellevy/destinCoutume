@@ -33,6 +33,7 @@ public:
     QVector<DomaineLoi*> m_TousDomainesLoi;
     QVector<CaracCoutume*> m_CaracsCoutume; // liste de toutes les caracs coutume existantes
     QVector<Cmdt*> m_Cmdts;
+    Cmdt* GetCmdtViaBddId(int bdd_id);
 
 private:
     void GenererEvtsAccueil();

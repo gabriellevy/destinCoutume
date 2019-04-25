@@ -37,9 +37,35 @@ void Peuple::AjouterCaracs()
     this->m_CaracsAAfficher.append("tempsEnMois");
 }
 
+bool Peuple::AEmplacementLibre()
+{
+    for ( EmplacementCmdt* empl: this->m_Cmdts) {
+        if ( empl->cmdt == nullptr)
+            return true;
+    }
+    return false;
+}
+
+bool Peuple::ACeCommandement(Cmdt* cmdt)
+{
+    for ( EmplacementCmdt* empl: this->m_Cmdts) {
+        if ( empl->cmdt == cmdt)
+            return true;
+    }
+    return false;
+}
+
 
 void Peuple::AppliquerCmdt(Cmdt* cmdt, int index)
 {
+    if ( index == -1) {
+        for ( EmplacementCmdt* empl: this->m_Cmdts) {
+            ++index;
+            if ( empl->cmdt == nullptr)
+                break;
+        }
+    }
+    Q_ASSERT_X(index < this->m_Cmdts.length(), "index impossible à atteindre", " Peuple::AppliquerCmdt");
     this->m_Cmdts[index]->cmdt = cmdt;
 }
 
