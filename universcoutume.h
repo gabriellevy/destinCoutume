@@ -40,6 +40,7 @@ public:
 
     DixCommandements* GetHistoireDixCommandement();
     QVector<DomaineLoi*> GetTousDomainesLoi();
+    QVector<CaracCoutume*> GetTousCaracCoutumes();
 
 
 };

@@ -104,7 +104,6 @@ bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
 
 
 
-
 /**
  * @brief applique l'effet de tous les commandements aux caracs de coutume du peuple
  * @param caracs
@@ -141,6 +140,17 @@ Cmdt* DixCommandements::GetCmdtViaBddId(int bdd_id)
     Q_ASSERT_X(true, "aucun cmdt de ce bdd id n'est trouvable", "DixCommandements::GetCmdtViaBddId");
 
     return nullptr;
+}
+
+int DixCommandements::GetCaracCoutumeBddId(QString intitule)
+{
+    for (CaracCoutume* carac: this->m_CaracsCoutume) {
+        if ( carac->m_Intitule == intitule) {
+            return carac->m_BddId;
+        }
+    }
+    Q_ASSERT_X(true, "id de CaracCoutume introuvable pour cet intitulé de carac", "DixCommandements::GetCaracCoutumeBddId");
+    return -1;
 }
 
 void DixCommandements::GenererFonctionsCallback()

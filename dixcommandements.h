@@ -34,6 +34,7 @@ public:
     QVector<CaracCoutume*> m_CaracsCoutume; // liste de toutes les caracs coutume existantes
     QVector<Cmdt*> m_Cmdts;
     Cmdt* GetCmdtViaBddId(int bdd_id);
+    int GetCaracCoutumeBddId(QString intitule);
 
 private:
     void GenererEvtsAccueil();

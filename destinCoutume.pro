@@ -41,14 +41,14 @@ SOURCES += \
     ../destinLib/evtaleatoire.cpp \
     ../destinLib/reglages.cpp \
     ../destinLib/aspectratiolabel.cpp \
-        mainwindow.cpp \
     ../destinLib/dbmanager.cpp \
     cmdt.cpp \
     universcoutume.cpp \
     dixcommandements.cpp \
     peuple.cpp \
     thdomainesdivins.cpp \
-    caraccmdt.cpp
+    caraccmdt.cpp \
+    saisiecmdt.cpp
 
 HEADERS += \
     ../destinLib/theme.h \
@@ -66,14 +66,14 @@ HEADERS += \
     ../destinLib/evtaleatoire.h \
     ../destinLib/reglages.h \
     ../destinLib/aspectratiolabel.h \
-        mainwindow.h \
     ../destinLib/dbmanager.h \
     cmdt.h \
     universcoutume.h \
     dixcommandements.h \
     peuple.h \
     thdomainesdivins.h \
-    caraccmdt.h
+    caraccmdt.h \
+    saisiecmdt.h
 
 FORMS += \
     ../destinLib/univers.ui \

@@ -181,3 +181,8 @@ QVector<DomaineLoi*> UniversCoutume::GetTousDomainesLoi()
 {
     return this->GetHistoireDixCommandement()->m_TousDomainesLoi;
 }
+
+QVector<CaracCoutume*> UniversCoutume::GetTousCaracCoutumes()
+{
+    return this->GetHistoireDixCommandement()->m_CaracsCoutume;
+}
