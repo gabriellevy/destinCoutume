@@ -19,7 +19,11 @@ private:
     QVector<QString> m_Regions;
     QVector<QString> m_Fleuves;
     QVector<QString> m_Monts;
+    QVector<QString> m_NomsMasculins;
+    QVector<QString> m_NomsFeminins;
     void GenererTousNomsPeuples();
+    void GenererTousNomsMasculins();
+    void GenererTousNomsFeminins();
     void GenererTousNomsVilles();
     void GenererTousNomsRegions();
     void GenererTousNomsFleuves();

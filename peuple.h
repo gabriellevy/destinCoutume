@@ -8,7 +8,6 @@ class Peuple : public DPerso
 {
 private:
     void AjouterCaracs();
-    QVector<EmplacementCmdt*> m_Cmdts = {};
 
 public:
     Peuple(QString imagePortrait);
@@ -20,8 +19,11 @@ public:
      * @param index : index de l'emplacement où ajouter le cmdt. -1 signifie le premier disponible dans l'ordre
      */
     void AppliquerCmdt(Cmdt* cmdt, int index = -1);
+    void SupprimerCmdt(int index);
     bool AEmplacementLibre();
     bool ACeCommandement(Cmdt* cmdt);
+
+    QVector<EmplacementCmdt*> m_Cmdts = {};
 };
 
 #endif // PEUPLE_H

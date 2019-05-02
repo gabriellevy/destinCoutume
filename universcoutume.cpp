@@ -71,6 +71,69 @@ void UniversCoutume::GenererTousNomsFleuves()
     m_Fleuves.push_back("Euphrate");
 }
 
+
+void UniversCoutume::GenererTousNomsMasculins()
+{
+    m_NomsMasculins.push_back("Crésus");
+    m_NomsMasculins.push_back("Aion");
+    m_NomsMasculins.push_back("Gygès");
+    m_NomsMasculins.push_back("Théodore");
+    m_NomsMasculins.push_back("Polycrate");
+    m_NomsMasculins.push_back("Adraste");
+    m_NomsMasculins.push_back("Pantaléon");
+    m_NomsMasculins.push_back("Polynice");
+    m_NomsMasculins.push_back("Amphiaraos");
+    m_NomsMasculins.push_back("Alyatte");
+    m_NomsMasculins.push_back("Pisistrate");
+    m_NomsMasculins.push_back("Hippocrate");
+    m_NomsMasculins.push_back("Mégaclès");
+    m_NomsMasculins.push_back("Solon");
+    m_NomsMasculins.push_back("Alcméon");
+    m_NomsMasculins.push_back("Agamemnon");
+    m_NomsMasculins.push_back("Odysséus");
+    m_NomsMasculins.push_back("Ulysse");
+    m_NomsMasculins.push_back("Achille");
+    m_NomsMasculins.push_back("Lycurgue");
+    m_NomsMasculins.push_back("Lygdamis");
+    m_NomsMasculins.push_back("Amphilytos");
+    m_NomsMasculins.push_back("Léon");
+    m_NomsMasculins.push_back("Hégésiclès");
+    m_NomsMasculins.push_back("Léobotès");
+    m_NomsMasculins.push_back("Anaxauride");
+    m_NomsMasculins.push_back("Ariston");
+    m_NomsMasculins.push_back("Oreste");
+    m_NomsMasculins.push_back("Lichas");
+    m_NomsMasculins.push_back("Sandanis");
+    m_NomsMasculins.push_back("Astyage");
+    m_NomsMasculins.push_back("Cyaxare");
+    m_NomsMasculins.push_back("Cyrus");
+    m_NomsMasculins.push_back("Cambyse");
+    m_NomsMasculins.push_back("Phraorte");
+    m_NomsMasculins.push_back("Déiocès");
+    m_NomsMasculins.push_back("Alyatte");
+    m_NomsMasculins.push_back("Sadyatte");
+    m_NomsMasculins.push_back("Thalès");
+    m_NomsMasculins.push_back("Syennésie");
+    m_NomsMasculins.push_back("Labynétos");
+    m_NomsMasculins.push_back("Amasis");
+    m_NomsMasculins.push_back("Harpage");
+    m_NomsMasculins.push_back("Alcénor");
+    m_NomsMasculins.push_back("Chronios");
+    m_NomsMasculins.push_back("Othryadès");
+    m_NomsMasculins.push_back("Hyroiadès");
+    m_NomsMasculins.push_back("Déiocès");
+    m_NomsMasculins.push_back("Pythermos");
+    m_NomsMasculins.push_back("Lacrénès");
+}
+
+void UniversCoutume::GenererTousNomsFeminins()
+{
+    m_NomsFeminins.push_back("Hélène");
+    m_NomsFeminins.push_back("Phye");
+    m_NomsFeminins.push_back("Aryénis");
+    m_NomsFeminins.push_back("Mandane");
+}
+
 void UniversCoutume::GenererTousNomsVilles()
 {
     m_Villes.push_back("Delphes");

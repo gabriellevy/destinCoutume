@@ -37,13 +37,14 @@ bool testeSiEmplacementCmdtLibre(QVector<QString>, QVector<QString>)
  */
 bool selectionnerCmdt(QVector<QString> , QVector<QString> bddIdCmdt)
 {
-    qDebug() << "selectionnerCmdt ";
     DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
     Peuple* peuple = dixCmdts->GetPeuple();
 
     Cmdt* nouv_cmdt = dixCmdts->GetCmdtViaBddId(bddIdCmdt[0].toInt());
 
     peuple->AppliquerCmdt(nouv_cmdt);
+
+    return true;
 }
 
 /**
@@ -51,9 +52,8 @@ bool selectionnerCmdt(QVector<QString> , QVector<QString> bddIdCmdt)
  * @param caracs
  * @return
  */
-bool choisirCmdt(QVector<QString> caracs, QVector<QString> )
+bool choisirCmdt(QVector<QString> , QVector<QString> )
 {
-    qDebug() << "choisirCmdt ";
     DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
 
     Effet* effetCourant = Univers::ME->GetHistoire()->EffetActuel();
@@ -90,6 +90,46 @@ bool choisirCmdt(QVector<QString> caracs, QVector<QString> )
 
     //int nbChoixCmdts
     //Choix*
+    return true;
+}
+
+bool supprimerCmdt(QVector<QString>, QVector<QString> indexCmdtSuppr)
+{
+    qDebug() << "supprimerCmdt ";
+
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+    Peuple* peuple = dixCmdts->GetPeuple();
+    peuple->SupprimerCmdt(indexCmdtSuppr[0].toInt());
+
+    return true;
+}
+
+bool genererChoixSuppressionCmdts(QVector<QString>, QVector<QString> )
+{
+    qDebug() << "genererChoixSuppressionCmdts ";
+    DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+    Peuple* peuple = dixCmdts->GetPeuple();
+
+    Effet* effetCourant = Univers::ME->GetHistoire()->EffetActuel();
+    effetCourant->SupprimerTousLesChoix();
+
+    int index = 0;
+    while ( index < peuple->m_Cmdts.length())
+    {
+        Cmdt* choix_cmdt = peuple->m_Cmdts[index]->cmdt;
+
+        Choix* choix = effetCourant->AjouterChoixVide();
+        choix->m_Text = choix_cmdt->m_Intitule;
+        choix->m_GoToEffetId = "ajoutCmdt";
+        AppelCallback* appel = new AppelCallback();
+        appel->m_NomFonction = "supprimerCmdt";
+        appel->m_ArgumentsParValeur.push_back(QString::number(index));
+        choix->m_FonctionsAppellees.push_back(appel);
+
+        index++;
+    }
+
+    return true;
 }
 
 bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
@@ -101,8 +141,6 @@ bool testSiTempsDeChoisirCmdt(QVector<QString> caracs, QVector<QString> )
     // pour tester je renvoie true une fois sur deux mais il faudra une formule sérieuse pour ça !
     return ( temps % 2 == 0);
 }
-
-
 
 /**
  * @brief applique l'effet de tous les commandements aux caracs de coutume du peuple
@@ -161,6 +199,8 @@ void DixCommandements::GenererFonctionsCallback()
     this->m_CallbackFunctions["choisirCmdt"] = &choisirCmdt;
     this->m_CallbackFunctions["testeSiEmplacementCmdtLibre"] = &testeSiEmplacementCmdtLibre;
     this->m_CallbackFunctions["selectionnerCmdt"] = &selectionnerCmdt;
+    this->m_CallbackFunctions["supprimerCmdt"] = &supprimerCmdt;
+    this->m_CallbackFunctions["genererChoixSuppressionCmdts"] = &genererChoixSuppressionCmdts;
 }
 
 void DixCommandements::GenererThemes()
@@ -206,7 +246,7 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
     }
 }
 
-DomaineLoi* DixCommandements::AjouterDomaineLoi(QString intitule, QString description, int bddId, int emplacements_initiaux)
+DomaineLoi* DixCommandements::AjouterDomaineLoi(QString intitule, QString description, int bddId, int )
 {
     DomaineLoi* dl = new DomaineLoi();
     dl->m_Intitule = intitule;
@@ -255,7 +295,23 @@ void DixCommandements::ChargerCmdts()
         /*if ( index == 0)
             this->GetPeuple()->AppliquerCmdt(cmdt, 0);
         else if ( index == 1)
-            this->GetPeuple()->AppliquerCmdt(cmdt, 1);*/
+            this->GetPeuple()->AppliquerCmdt(cmdt, 1);
+        else if ( index == 2)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 2);
+        else if ( index == 3)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 3);
+        else if ( index == 4)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 4);
+        else if ( index == 5)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 5);
+        else if ( index == 6)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 6);
+        else if ( index == 7)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 7);
+        else if ( index == 8)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 8);
+        else if ( index == 9)
+            this->GetPeuple()->AppliquerCmdt(cmdt, 9);*/
 
         index++;
     }

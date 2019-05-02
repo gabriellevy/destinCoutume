@@ -84,7 +84,7 @@ FORMS += \
     ../destinLib/histoire.ui \
     ../destinLib/noeud.ui \
     ../destinLib/perso.ui \
-        mainwindow.ui
+    saisiecmdt.ui
 
 CONFIG += mobility
 MOBILITY = 
