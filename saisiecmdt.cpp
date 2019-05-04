@@ -40,7 +40,7 @@ void SaisieCmdt::AjouterCmdtBdd()
     QString description = this->ui->texteCmdt->toPlainText();
     description = description.replace("'", "''");
     int id_domaine_loi = -1;
-    QString domaineSelectionne = ui->comBoxDomaineLoi->currentText();
+    /*QString domaineSelectionne = ui->comBoxDomaineLoi->currentText();
     for ( DomaineLoi* domaine: this->GetUniversCoutume()->GetTousDomainesLoi()) {
         if ( domaine->m_Intitule == domaineSelectionne) {
             id_domaine_loi = domaine->m_BddId;
@@ -48,7 +48,7 @@ void SaisieCmdt::AjouterCmdtBdd()
         }
     }
     QString msg = "id de domaine loi introuvable pour ce domaine : " + domaineSelectionne;
-    Q_ASSERT_X(id_domaine_loi != -1, msg.toStdString().c_str(), "MainWindow::AjouterCmdtBdd");
+    Q_ASSERT_X(id_domaine_loi != -1, msg.toStdString().c_str(), "MainWindow::AjouterCmdtBdd");*/
 
     QSqlQuery query;
     if ( query.exec("INSERT INTO Cmdt (intitule, description, id_domaine_loi) "
@@ -95,10 +95,10 @@ UniversCoutume* SaisieCmdt::GetUniversCoutume()
 
 void SaisieCmdt::ChargerInterfaceSaisieCmdt()
 {
-    foreach(DomaineLoi* it, GetUniversCoutume()->GetTousDomainesLoi())
+    /*foreach(DomaineLoi* it, GetUniversCoutume()->GetTousDomainesLoi())
     {
         ui->comBoxDomaineLoi->addItem(it->m_Intitule);
-    }
+    }*/
 
     for(CaracCoutume* carac: GetUniversCoutume()->GetTousCaracCoutumes())
     {

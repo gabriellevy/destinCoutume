@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Saisie</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -28,7 +28,7 @@
     </property>
     <widget class="QWidget" name="commandementTab">
      <attribute name="title">
-      <string>SaisieCmdt</string>
+      <string>Saie de Commandement</string>
      </attribute>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
@@ -161,9 +161,9 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="widget">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Saisie d'événement</string>
      </attribute>
     </widget>
    </widget>

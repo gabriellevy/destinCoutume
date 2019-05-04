@@ -252,7 +252,7 @@ DomaineLoi* DixCommandements::AjouterDomaineLoi(QString intitule, QString descri
     dl->m_Intitule = intitule;
     dl->m_Description = description;
     dl->m_BddId = bddId;
-    m_TousDomainesLoi.push_back(dl);
+    //m_TousDomainesLoi.push_back(dl);
     return dl;
 }
 
@@ -264,13 +264,13 @@ Cmdt* DixCommandements::AjouterCmdtBdd(QString intitule, QString description, in
     cmdt->m_BddId = bddid;
 
     // récupérer le domaine de loi associé
-    for ( DomaineLoi* dom: this->m_TousDomainesLoi)
+    /*for ( DomaineLoi* dom: this->m_TousDomainesLoi)
     {
         if ( dom->m_BddId == id_domaine_loi) {
             cmdt->m_DomaineLoi = dom;
             break;
         }
-    }
+    }*/
     // et les effets sur carac coutume associés :
     cmdt->AjouterEffetsSurCaracCoutumeBdd();
 
@@ -317,6 +317,7 @@ void DixCommandements::ChargerCmdts()
     }
 }
 
+// conservée car elle sert pour la création d'emplacements de commandements mais elle pourrait être supprimée et réorganisée si la suppresion du DomaineLoi est confirmée
 void DixCommandements::ChargerDomainesLoi()
 {
     QSqlQuery query("SELECT * FROM DomaineLoi");
@@ -332,12 +333,12 @@ void DixCommandements::ChargerDomainesLoi()
         // création des emplacements de commandement associés si il y en a :
         if (dom->m_Intitule != "Métaphysique")
         {
-            this->GetPeuple()->AjouterEmplacementCmdt(dom);
+            this->GetPeuple()->AjouterEmplacementCmdt(/*dom*/);
             if (dom->m_Intitule == "Pouvoir" ||
                     dom->m_Intitule == "Moeurs" ||
                     dom->m_Intitule == "Rituels")
             {
-                this->GetPeuple()->AjouterEmplacementCmdt(dom);
+                this->GetPeuple()->AjouterEmplacementCmdt(/*dom*/);
             }
         }
     }

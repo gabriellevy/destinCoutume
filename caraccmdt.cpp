@@ -19,10 +19,11 @@ CaracCmdt::CaracCmdt(EmplacementCmdt* emplacementCmdt, QWidget *parent)
 
 QString CaracCmdt::GetCaracDescription()
 {
-    QString domaineStr = "Domaine " + m_EmplacementCmdt->m_DomaineLoi->m_Intitule;
+    //QString domaineStr = "Domaine " + m_EmplacementCmdt->m_DomaineLoi->m_Intitule;
+    QString domaineStr = "";
     if ( m_EmplacementCmdt->cmdt != nullptr)
-        return m_EmplacementCmdt->cmdt->m_Intitule +
-                "\n ( " + domaineStr + " )";
-    else return domaineStr +
-            "\nPas de commandement affecté encore";
+        return m_EmplacementCmdt->cmdt->m_Intitule/* +
+                "\n( " + domaineStr + " )"*/;
+    else return /*domaineStr + "\n"*/
+            "Pas de commandement affecté encore";
 }

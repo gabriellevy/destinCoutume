@@ -240,10 +240,10 @@ DixCommandements* UniversCoutume::GetHistoireDixCommandement()
     return dynamic_cast<DixCommandements*>(this->m_Histoire);
 }
 
-QVector<DomaineLoi*> UniversCoutume::GetTousDomainesLoi()
+/*QVector<DomaineLoi*> UniversCoutume::GetTousDomainesLoi()
 {
     return this->GetHistoireDixCommandement()->m_TousDomainesLoi;
-}
+}*/
 
 QVector<CaracCoutume*> UniversCoutume::GetTousCaracCoutumes()
 {

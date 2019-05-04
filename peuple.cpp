@@ -75,9 +75,9 @@ void Peuple::SupprimerCmdt(int index)
     this->m_Cmdts[index]->cmdt = nullptr;
 }
 
-void Peuple::AjouterEmplacementCmdt(DomaineLoi* domaine)
+void Peuple::AjouterEmplacementCmdt(/*DomaineLoi* domaine*/)
 {
-    EmplacementCmdt* empl = new EmplacementCmdt(domaine);
+    EmplacementCmdt* empl = new EmplacementCmdt(/*domaine*/);
     this->m_Cmdts.push_back(empl);
 
     CaracCmdt* carac = new CaracCmdt(empl);

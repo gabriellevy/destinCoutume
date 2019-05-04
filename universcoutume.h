@@ -43,7 +43,7 @@ public:
     QString GenererNomPeuple();
 
     DixCommandements* GetHistoireDixCommandement();
-    QVector<DomaineLoi*> GetTousDomainesLoi();
+    //QVector<DomaineLoi*> GetTousDomainesLoi();
     QVector<CaracCoutume*> GetTousCaracCoutumes();
 
 

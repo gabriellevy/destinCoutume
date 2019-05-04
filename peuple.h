@@ -11,7 +11,7 @@ private:
 
 public:
     Peuple(QString imagePortrait);
-    void AjouterEmplacementCmdt(DomaineLoi* domaine);
+    void AjouterEmplacementCmdt(/*DomaineLoi* domaine*/);
 
     /**
      * @brief applique le commandement dans l'emplacement d'index

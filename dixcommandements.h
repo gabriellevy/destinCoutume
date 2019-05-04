@@ -30,7 +30,7 @@ public:
     void ChargerCmdts();
     DomaineLoi* AjouterDomaineLoi(QString intitule, QString description, int bddId, int emplacements_initiaux);
     Cmdt* AjouterCmdtBdd(QString intitule, QString description, int bddid, int id_domaine_loi);
-    QVector<DomaineLoi*> m_TousDomainesLoi;
+    //QVector<DomaineLoi*> m_TousDomainesLoi;
     QVector<CaracCoutume*> m_CaracsCoutume; // liste de toutes les caracs coutume existantes
     QVector<Cmdt*> m_Cmdts;
     Cmdt* GetCmdtViaBddId(int bdd_id);
