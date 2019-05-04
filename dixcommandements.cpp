@@ -61,9 +61,9 @@ bool choisirCmdt(QVector<QString> , QVector<QString> )
 
     int nb_choix_cmdt = 6;
     int index = 0;
-    while ( nb_choix_cmdt > 0 && index < dixCmdts->m_Cmdts.length())
+    while ( nb_choix_cmdt > 0 && index < dixCmdts->m_TousLesCmdts.length())
     {
-        Cmdt* choix_cmdt = dixCmdts->m_Cmdts[ qrand()%dixCmdts->m_Cmdts.length()];
+        Cmdt* choix_cmdt = dixCmdts->m_TousLesCmdts[ qrand()%dixCmdts->m_TousLesCmdts.length()];
         // vérifier que ce cmdt n'est pas déjà possédé :
         bool a_deja = dixCmdts->GetPeuple()->ACeCommandement(choix_cmdt);
         if (!a_deja) {
@@ -153,14 +153,16 @@ bool appliquerCmdts(QVector<QString> , QVector<QString> )
     DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
 
     // remise à 0 de toutes les caracs coutume :
-    for ( CaracCoutume* cCout: dixCmdts->m_CaracsCoutume) {
+    for ( CaracCoutume* cCout: dixCmdts->m_ToutesCaracsCoutume) {
         Carac::SetValeurACaracId(cCout->m_Intitule, "0");
     }
 
     // application de tous les effets sur carac coutume des cmdts :
-    for ( Cmdt* cmdt: dixCmdts->m_Cmdts) {
-        for ( EffetSurCaracCoutume* effet: cmdt->m_EffetsSurCaracCoutume) {
-            Carac::AJouterValeurACaracId(effet->m_CaracCoutume->m_Intitule, effet->m_Val);
+    for ( EmplacementCmdt* empl_cmdt: dixCmdts->GetPeuple()->m_Cmdts) {
+        if ( empl_cmdt->cmdt != nullptr) {
+            for ( EffetSurCaracCoutume* effet: empl_cmdt->cmdt->m_EffetsSurCaracCoutume) {
+                Carac::AJouterValeurACaracId(effet->m_CaracCoutume->m_Intitule, effet->m_Val);
+            }
         }
     }
 
@@ -170,7 +172,7 @@ bool appliquerCmdts(QVector<QString> , QVector<QString> )
 
 Cmdt* DixCommandements::GetCmdtViaBddId(int bdd_id)
 {
-    for ( Cmdt* cmdt: this->m_Cmdts) {
+    for ( Cmdt* cmdt: this->m_TousLesCmdts) {
         if ( cmdt->m_BddId == bdd_id)
             return cmdt;
     }
@@ -182,11 +184,12 @@ Cmdt* DixCommandements::GetCmdtViaBddId(int bdd_id)
 
 int DixCommandements::GetCaracCoutumeBddId(QString intitule)
 {
-    for (CaracCoutume* carac: this->m_CaracsCoutume) {
+    for (CaracCoutume* carac: this->m_ToutesCaracsCoutume) {
         if ( carac->m_Intitule == intitule) {
             return carac->m_BddId;
         }
     }
+
     Q_ASSERT_X(true, "id de CaracCoutume introuvable pour cet intitulé de carac", "DixCommandements::GetCaracCoutumeBddId");
     return -1;
 }
@@ -230,7 +233,7 @@ void DixCommandements::ChargerBDD(QString cheminBDD)
         this->ChargerCaracCoutume();
 
         // les caracs de coutume sont chargées en tant que caracs "normales" de l'histoire (et commencent à valeur 0)
-        for ( CaracCoutume* cCout: m_CaracsCoutume)
+        for ( CaracCoutume* cCout: m_ToutesCaracsCoutume)
         {
             QString id = cCout->m_Intitule;
 
@@ -274,7 +277,7 @@ Cmdt* DixCommandements::AjouterCmdtBdd(QString intitule, QString description, in
     // et les effets sur carac coutume associés :
     cmdt->AjouterEffetsSurCaracCoutumeBdd();
 
-    this->m_Cmdts.push_back(cmdt);
+    this->m_TousLesCmdts.push_back(cmdt);
     return cmdt;
 }
 
@@ -358,7 +361,7 @@ void DixCommandements::ChargerCaracCoutume()
        car->m_Intitule = intitule;
        car->m_Description = description;
        car->m_BddId = id;
-       m_CaracsCoutume.push_back(car);
+       m_ToutesCaracsCoutume.push_back(car);
     }
 }
 

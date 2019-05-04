@@ -42,6 +42,7 @@ SOURCES += \
     ../destinLib/reglages.cpp \
     ../destinLib/aspectratiolabel.cpp \
     ../destinLib/dbmanager.cpp \
+    ../destinLib/selectionneurdevenement.cpp \
     cmdt.cpp \
     universcoutume.cpp \
     dixcommandements.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     ../destinLib/reglages.h \
     ../destinLib/aspectratiolabel.h \
     ../destinLib/dbmanager.h \
+    ../destinLib/selectionneurdevenement.h \
     cmdt.h \
     universcoutume.h \
     dixcommandements.h \

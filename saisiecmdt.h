@@ -14,7 +14,7 @@ class MainWindow;
 }
 
 /**
- * @brief Interface de saisie de commandement
+ * @brief Interface de saisie de commandement et d'événement
  */
 class SaisieCmdt : public QMainWindow
 {
@@ -31,14 +31,21 @@ private:
     Ui::MainWindow *ui;
 
     // convenient pointers to interface elements :
+    // saisie de commandement :
     QVector<QLineEdit*> m_CaracValuesInputs = {};
     QVector<QComboBox*> m_CaracTypeInputs = {};
+    // saisie d'événement :
+    QVector<QLineEdit*> m_CondValeurCaracInputs = {};
+    QVector<QComboBox*> m_CondTypeCaracInputs = {};
+    QVector<QComboBox*> m_CondSigneInputs = {};
 
     void ChargerInterfaceSaisieCmdt();
+    void ChargerInterfaceSaisieEvt();
     UniversCoutume* GetUniversCoutume();
 
 private slots:
     void AjouterCmdtBdd();
+    void AjouterEvtBdd();
 };
 
 #endif // MAINWINDOW_H

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="commandementTab">
      <attribute name="title">
@@ -165,6 +165,161 @@
      <attribute name="title">
       <string>Saisie d'événement</string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>571</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="titreEvt"/>
+         </item>
+         <item>
+          <widget class="QPlainTextEdit" name="texteEvt"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ajouterEvt">
+           <property name="text">
+            <string>Ajouter l'événement</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="GroupeCondition">
+         <property name="title">
+          <string>Conditions</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QHBoxLayout" name="condition1">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition1"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition1"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition1"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition2">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition2"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition2"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition2"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition3">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition3"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition3"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition3"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition4">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition4"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition4"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition4"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition5">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition5"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition5"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition5"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition6">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition6"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition6"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition6"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition7">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition7"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition7"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition7"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition8">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition8"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition8"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition8"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="condition9">
+            <item>
+             <widget class="QComboBox" name="caracCoutumeCondition9"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="signeCondition9"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="valeurCondition9"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

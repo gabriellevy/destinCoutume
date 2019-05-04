@@ -247,5 +247,5 @@ DixCommandements* UniversCoutume::GetHistoireDixCommandement()
 
 QVector<CaracCoutume*> UniversCoutume::GetTousCaracCoutumes()
 {
-    return this->GetHistoireDixCommandement()->m_CaracsCoutume;
+    return this->GetHistoireDixCommandement()->m_ToutesCaracsCoutume;
 }
