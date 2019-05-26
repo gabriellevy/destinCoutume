@@ -13,6 +13,8 @@ namespace Ui {
 class MainWindow;
 }
 
+class GenHistCoutume;
+
 /**
  * @brief Interface de saisie de commandement et d'événement
  */
@@ -42,6 +44,7 @@ private:
     void ChargerInterfaceSaisieCmdt();
     void ChargerInterfaceSaisieEvt();
     UniversCoutume* GetUniversCoutume();
+    GenHistCoutume* GetGenHistCoutume();
 
 private slots:
     void AjouterCmdtBdd();

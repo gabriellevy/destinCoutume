@@ -19,6 +19,11 @@ SaisieCmdt::SaisieCmdt(QWidget *parent) :
 }
 
 
+GenHistCoutume* SaisieCmdt::GetGenHistCoutume()
+{
+    return this->GetUniversCoutume()->GetGenHistCoutume();
+}
+
 void SaisieCmdt::AjouterEvtBdd()
 {
     QString intitule = this->ui->titreEvt->text();
@@ -31,7 +36,7 @@ void SaisieCmdt::AjouterEvtBdd()
     QSqlQuery requeteNoeud;
     if ( requeteNoeud.exec("INSERT INTO d_Noeud (m_Id) "
                     "VALUES ('" + intitule + "')")) {
-        this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+        this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
     } else {
          qDebug() <<  "requeteNoeud Evt Erreur SQL : " + requeteNoeud.lastError().text();
          return;
@@ -40,7 +45,7 @@ void SaisieCmdt::AjouterEvtBdd()
     QSqlQuery requeteEvt;
     if ( requeteEvt.exec("INSERT INTO d_Evt (est_noeud_id, appartient_selectionneur_evt_id) "
                     "VALUES ('" + QString::number(noeud_evt_id) + "', '1')")) { // A FAIRE : le sélectionneur d'événement est laissé en dur pour l'instant => il faudrait ajouter sa sélection dans l'interface
-        this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+        this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
     } else {
          qDebug() <<  "requeteEvt Erreur SQL : " + requeteEvt.lastError().text();
          return;
@@ -65,7 +70,7 @@ void SaisieCmdt::AjouterEvtBdd()
             requete_Conditions.bindValue(":comparateur", strFinale);
 
             if ( requete_Conditions.exec()) {
-                this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+                this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
             } else {
                  qDebug() <<  "requete_Conditions Erreur SQL : " + requete_Conditions.lastError().text() + " - index : " + i;
                  return;
@@ -79,7 +84,7 @@ void SaisieCmdt::AjouterEvtBdd()
     QSqlQuery requeteNoeudEffet;
     if ( requeteNoeudEffet.exec("INSERT INTO d_Noeud (m_Id, m_Text, m_GoToEvtId) "
                     "VALUES ('" + intitule + "', '" + texte + "', 'EvtPassageDuTemps')")) { // une fois l'effet aléatoire exécuté on va forcément vers EvtPassageDuTemps
-        this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+        this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
     } else {
          qDebug() <<  "requeteNoeudEffet Erreur SQL : " + requeteNoeudEffet.lastError().text();
          return;
@@ -88,7 +93,7 @@ void SaisieCmdt::AjouterEvtBdd()
     QSqlQuery requeteEffet;
     if ( requeteEffet.exec("INSERT INTO d_Effet (est_un_noeud_id, appartient_a_evt_id, ordre) "
                     "VALUES ('" + QString::number(noeud_effet_id) + "', '" + QString::number(evt_id) + "', '1')")) {
-        this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+        this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
     } else {
          qDebug() <<  "requeteEffet Erreur SQL : " + requeteEffet.lastError().text();
          return;
@@ -116,7 +121,7 @@ void SaisieCmdt::AjouterCmdtBdd()
     QSqlQuery query;
     if ( query.exec("INSERT INTO Cmdt (intitule, description, id_domaine_loi) "
                     "VALUES ('" + intitule + "', '" + description + "', '" + QString::number(id_domaine_loi) + "')")) {
-        this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+        this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
     } else {
          qDebug() <<  "Erreur SQL : " + query.lastError().text();
          return;
@@ -133,11 +138,11 @@ void SaisieCmdt::AjouterCmdtBdd()
     for ( int i = 0 ; i < m_CaracValuesInputs.length(); ++i) {
         if ( m_CaracValuesInputs[i]->text() != "") {
             requete_EffetCaracCoutume.bindValue(":val", m_CaracValuesInputs[i]->text());
-            int id_carac = this->GetUniversCoutume()->GetHistoireDixCommandement()->GetCaracCoutumeBddId(
+            int id_carac = this->GetUniversCoutume()->GetGenHistCoutume()->GetCaracCoutumeBddId(
                         m_CaracTypeInputs[i]->currentText());
             requete_EffetCaracCoutume.bindValue(":id_carac_coutume",id_carac);
             if ( requete_EffetCaracCoutume.exec()) {
-                this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+                this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
             } else {
                  qDebug() <<  "Erreur SQL : " + requete_EffetCaracCoutume.lastError().text();
                  return;
@@ -147,7 +152,7 @@ void SaisieCmdt::AjouterCmdtBdd()
         }
     }
 
-    this->GetUniversCoutume()->GetHistoireDixCommandement()->m_Db.m_db.commit();
+    this->GetUniversCoutume()->GetGenHistCoutume()->m_Db.m_db.commit();
 }
 
 UniversCoutume* SaisieCmdt::GetUniversCoutume()

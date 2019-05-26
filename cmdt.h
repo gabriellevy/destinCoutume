@@ -36,10 +36,11 @@ struct EmplacementCmdt {
 
 class Cmdt
 {
+    DixCommandements* m_Dixcom;
     EffetSurCaracCoutume* AjouterUnEffetSurCaracCoutume(int val, int id_carac_coutume, int bdd_id);
 
 public:
-    explicit Cmdt();
+    explicit Cmdt(DixCommandements* dixcom);
 
     QString m_Intitule;
     QString m_Description;

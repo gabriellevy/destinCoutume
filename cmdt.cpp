@@ -4,14 +4,14 @@
 #include "dixcommandements.h"
 #include "universcoutume.h"
 
-Cmdt::Cmdt()
+Cmdt::Cmdt(DixCommandements* dixcom):m_Dixcom(dixcom)
 {
 
 }
 
 DixCommandements* Cmdt::GetDixCommandements()
 {
-    return static_cast<DixCommandements*>(Univers::ME->GetHistoire());
+    return m_Dixcom;
 }
 
 EffetSurCaracCoutume* Cmdt::AjouterUnEffetSurCaracCoutume(int val, int id_carac_coutume, int bdd_id)

@@ -8,9 +8,10 @@ class Peuple : public DPerso
 {
 private:
     void AjouterCaracs();
+    DixCommandements* m_Dixcmdt = nullptr;
 
 public:
-    Peuple(QString imagePortrait);
+    Peuple(QString imagePortrait, DixCommandements* dixcmdt);
     void AjouterEmplacementCmdt(/*DomaineLoi* domaine*/);
 
     /**

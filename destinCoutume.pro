@@ -34,7 +34,8 @@ SOURCES += \
     ../destinLib/effet.cpp \
     ../destinLib/evt.cpp \
     ../destinLib/glisseur.cpp \
-    ../destinLib/histoire.cpp \
+    ../destinLib/exechistoire.cpp \
+    ../destinLib/genhistoire.cpp \
     ../destinLib/noeud.cpp \
     ../destinLib/perso.cpp \
     ../destinLib/setcarac.cpp \
@@ -49,7 +50,8 @@ SOURCES += \
     peuple.cpp \
     thdomainesdivins.cpp \
     caraccmdt.cpp \
-    saisiecmdt.cpp
+    saisiecmdt.cpp \
+    genhistcoutume.cpp
 
 HEADERS += \
     ../destinLib/theme.h \
@@ -60,7 +62,8 @@ HEADERS += \
     ../destinLib/effet.h \
     ../destinLib/evt.h \
     ../destinLib/glisseur.h \
-    ../destinLib/histoire.h \
+    ../destinLib/exechistoire.h \
+    ../destinLib/genhistoire.h \
     ../destinLib/noeud.h \
     ../destinLib/perso.h \
     ../destinLib/setcarac.h \
@@ -75,7 +78,8 @@ HEADERS += \
     peuple.h \
     thdomainesdivins.h \
     caraccmdt.h \
-    saisiecmdt.h
+    saisiecmdt.h \
+    genhistcoutume.h
 
 FORMS += \
     ../destinLib/univers.ui \
