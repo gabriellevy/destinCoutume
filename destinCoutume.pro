@@ -28,6 +28,7 @@ SOURCES += \
         main.cpp \
     ../destinLib/theme.cpp \
     ../destinLib/univers.cpp \
+    ../destinLib/histoire.cpp \
     ../destinLib/carac.cpp \
     ../destinLib/choix.cpp \
     ../destinLib/condition.cpp \
@@ -56,6 +57,7 @@ SOURCES += \
 HEADERS += \
     ../destinLib/theme.h \
     ../destinLib/univers.h \
+    ../destinLib/histoire.h \
     ../destinLib/carac.h \
     ../destinLib/choix.h \
     ../destinLib/condition.h \

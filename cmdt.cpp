@@ -30,6 +30,8 @@ EffetSurCaracCoutume* Cmdt::AjouterUnEffetSurCaracCoutume(int val, int id_carac_
     }
 
     this->m_EffetsSurCaracCoutume.push_back(effet);
+
+    return effet;
 }
 
 void Cmdt::AjouterEffetsSurCaracCoutumeBdd()
@@ -38,7 +40,7 @@ void Cmdt::AjouterEffetsSurCaracCoutumeBdd()
     QSqlQuery query("SELECT * FROM EffetCaracCoutume WHERE id_cmdt = " + QString::number(this->m_BddId));
     while (query.next())
     {
-        EffetSurCaracCoutume* effet = this->AjouterUnEffetSurCaracCoutume(
+        /*EffetSurCaracCoutume* effet =*/ this->AjouterUnEffetSurCaracCoutume(
                     query.value("val").toInt(),
                     query.value("id_carac_coutume").toInt(),
                     query.value("id").toInt()

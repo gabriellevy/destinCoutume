@@ -1,10 +1,9 @@
 #include "dixcommandements.h"
-#include "ui_univers.h"
+//#include "ui_univers.h"
 #include "peuple.h"
 #include "cmdt.h"
-#include <QDebug>
 
-DixCommandements::DixCommandements(QWidget *parent):ExecHistoire(parent)
+DixCommandements::DixCommandements():Hist()
 {
 }
 

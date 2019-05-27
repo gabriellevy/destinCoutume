@@ -24,12 +24,12 @@ private:
     virtual void GenererThemes();
     virtual void GenererFonctionsCallback();
     UniversCoutume* GetUniversCoutume();
-    DixCommandements* GetDixCmdts();
+    DixCommandements* GetDixCmdts(); // je le laisse pour l'instant mais ce n'est aps logique : on ne devrait pas utiliser de pointeur vers une histoire exécutable dans le système de génération d'histoire
 
 public:
-    GenHistCoutume(QWidget *parent);
+    GenHistCoutume(DixCommandements* histoireGeneree);
 
-    virtual ExecHistoire* GenererHistoire();
+    virtual Hist* GenererHistoire();
 
     // gestion de la BDD
     virtual void ChargerBDD(QString cheminBDD);

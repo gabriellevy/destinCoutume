@@ -12,20 +12,22 @@ UniversCoutume::UniversCoutume(ModeAffichage modeAffichage,
     this->AppliquerTheme(QColor(180, 180, 210));
 }
 
-void UniversCoutume::ExecuterGenerateurHistoire(QWidget *parent)
+Hist* UniversCoutume::ExecuterGenerateurHistoire()
 {
-    m_GenHistoire = new GenHistCoutume(parent);
-    m_Histoire = m_GenHistoire->GenererHistoire();
+    m_Histoire = new DixCommandements();
+    m_GenHistoire = new GenHistCoutume(static_cast<DixCommandements*>(m_Histoire));
+    m_GenHistoire->GenererHistoire();
+    return m_Histoire;
 }
 
-void UniversCoutume::LancerHistoire(QString premierEvt, QString premierEffet, bool BarreDeCote)
+void UniversCoutume::LancerHistoire(ExecHistoire* execHistoire, QWidget *parent, QString premierEvt, QString premierEffet, bool BarreDeCote)
 {
-    Univers::LancerHistoire(premierEvt, premierEffet, BarreDeCote);
+    Univers::LancerHistoire(execHistoire, parent, premierEvt, premierEffet, BarreDeCote);
 
     if ( premierEvt != "" )
-        m_Histoire->SetCurrentEvtId( premierEvt ) ;
+        m_ExecHistoire->SetCurrentEvtId( premierEvt ) ;
     if ( premierEffet!= "" )
-        m_Histoire->SetEffetIndex(m_Histoire->DeterminerIndexEffet(premierEffet) );
+        m_ExecHistoire->SetEffetIndex(m_ExecHistoire->DeterminerIndexEffet(premierEffet) );
 
     m_EtatPartie = EP_Deroulement;
 
@@ -48,7 +50,7 @@ void UniversCoutume::GenererCaracs()
 
 DixCommandements* UniversCoutume::GetHistoireDixCommandement()
 {
-    return dynamic_cast<DixCommandements*>(this->m_Histoire);
+    return dynamic_cast<DixCommandements*>(this->m_ExecHistoire);
 }
 
 GenHistCoutume* UniversCoutume::GetGenHistCoutume()

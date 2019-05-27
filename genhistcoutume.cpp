@@ -5,9 +5,8 @@
 #include "peuple.h"
 #include "universcoutume.h"
 
-GenHistCoutume::GenHistCoutume(QWidget *parent):GenHistoire (nullptr)
+GenHistCoutume::GenHistCoutume(DixCommandements* histoireGeneree):GenHistoire (histoireGeneree)
 {
-    m_HistoireGeneree = new DixCommandements(parent);
 }
 
 // cette fonction peut être mise dans la bdd si elle ne fait que ça
@@ -56,7 +55,7 @@ bool choisirCmdt(QVector<QString> , QVector<QString> )
 {
     DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
 
-    Effet* effetCourant = Univers::ME->GetHistoire()->EffetActuel();
+    Effet* effetCourant = Univers::ME->GetExecHistoire()->EffetActuel();
     effetCourant->SupprimerTousLesChoix();
 
     int nb_choix_cmdt = 6;
@@ -110,7 +109,7 @@ bool genererChoixSuppressionCmdts(QVector<QString>, QVector<QString> )
     DixCommandements* dixCmdts = static_cast<DixCommandements*>(Univers::ME->GetHistoire());
     Peuple* peuple = dixCmdts->GetPeuple();
 
-    Effet* effetCourant = Univers::ME->GetHistoire()->EffetActuel();
+    Effet* effetCourant = Univers::ME->GetExecHistoire()->EffetActuel();
     effetCourant->SupprimerTousLesChoix();
 
     int index = 0;
@@ -171,22 +170,22 @@ bool appliquerCmdts(QVector<QString> , QVector<QString> )
 
 void GenHistCoutume::GenererFonctionsCallback()
 {
-    this->m_HistoireGeneree->m_CallbackFunctions["appliquerCmdts"] = &appliquerCmdts;
-    this->m_HistoireGeneree->m_CallbackFunctions["passageDuTemps"] = &passageDuTemps;
-    this->m_HistoireGeneree->m_CallbackFunctions["testSiTempsDeChoisirCmdt"] = &testSiTempsDeChoisirCmdt;
-    this->m_HistoireGeneree->m_CallbackFunctions["choisirCmdt"] = &choisirCmdt;
-    this->m_HistoireGeneree->m_CallbackFunctions["testeSiEmplacementCmdtLibre"] = &testeSiEmplacementCmdtLibre;
-    this->m_HistoireGeneree->m_CallbackFunctions["selectionnerCmdt"] = &selectionnerCmdt;
-    this->m_HistoireGeneree->m_CallbackFunctions["supprimerCmdt"] = &supprimerCmdt;
-    this->m_HistoireGeneree->m_CallbackFunctions["genererChoixSuppressionCmdts"] = &genererChoixSuppressionCmdts;
+    m_HistoireGeneree->m_CallbackFunctions["appliquerCmdts"] = &appliquerCmdts;
+    m_HistoireGeneree->m_CallbackFunctions["passageDuTemps"] = &passageDuTemps;
+    m_HistoireGeneree->m_CallbackFunctions["testSiTempsDeChoisirCmdt"] = &testSiTempsDeChoisirCmdt;
+    m_HistoireGeneree->m_CallbackFunctions["choisirCmdt"] = &choisirCmdt;
+    m_HistoireGeneree->m_CallbackFunctions["testeSiEmplacementCmdtLibre"] = &testeSiEmplacementCmdtLibre;
+    m_HistoireGeneree->m_CallbackFunctions["selectionnerCmdt"] = &selectionnerCmdt;
+    m_HistoireGeneree->m_CallbackFunctions["supprimerCmdt"] = &supprimerCmdt;
+    m_HistoireGeneree->m_CallbackFunctions["genererChoixSuppressionCmdts"] = &genererChoixSuppressionCmdts;
 }
 
 void GenHistCoutume::GenererThemes()
 {
-    this->m_HistoireGeneree->AppliquerTheme(new ThDomainesDivins());
+    Univers::ME->GetHistoire()->AppliquerTheme(new ThDomainesDivins());
 }
 
-ExecHistoire* GenHistCoutume::GenererHistoire()
+Hist* GenHistCoutume::GenererHistoire()
 {
     GenererTousNomsPeuples();
 
@@ -337,7 +336,7 @@ void GenHistCoutume::ChargerDomainesLoi()
 
 void GenHistCoutume::GenererPersos()
 {
-    Peuple* peuple = new Peuple(":/images/perso/peuple.jpg", GetDixCmdts());
+    Peuple* peuple = new Peuple(":/images/perso/peuple.jpg", m_HistoireGeneree);
     IPerso::AjouterPersoJouable(peuple);
 }
 
@@ -357,7 +356,7 @@ UniversCoutume* GenHistCoutume::GetUniversCoutume()
 
 DixCommandements* GenHistCoutume::GetDixCmdts()
 {
-    return static_cast<DixCommandements*>(m_HistoireGeneree);
+    return static_cast<DixCommandements*>(Univers::ME->GetHistoire());
 }
 
 void GenHistCoutume::ChargerCaracCoutume()

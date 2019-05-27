@@ -23,8 +23,8 @@ public:
 
     // données génériques d'historique
     QString GenererNomPeuple();
-    virtual void ExecuterGenerateurHistoire(QWidget *parent = nullptr);
-    virtual void LancerHistoire(QString premierEvt, QString premierEffet, bool BarreDeCote = true);
+    virtual Hist* ExecuterGenerateurHistoire();
+    virtual void LancerHistoire(ExecHistoire* execHistoire, QWidget *parent = nullptr, QString premierEvt = "", QString premierEffet = "", bool BarreDeCote = true);
 
     DixCommandements* GetHistoireDixCommandement();
     GenHistCoutume* GetGenHistCoutume();

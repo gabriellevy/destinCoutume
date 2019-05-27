@@ -1,18 +1,15 @@
 #ifndef DIXCOMMANDEMENTS_H
 #define DIXCOMMANDEMENTS_H
 
-#include <QWidget>
-#include "../destinLib/exechistoire.h"
+#include "../destinLib/histoire.h"
 #include "cmdt.h"
 
 class Peuple;
 
-class DixCommandements : public ExecHistoire
+class DixCommandements : public Hist
 {
-    Q_OBJECT
-
 public:
-    DixCommandements(QWidget *parent = nullptr);
+    DixCommandements();
     static DixCommandements* ME;
     virtual QString GetTitre();
 

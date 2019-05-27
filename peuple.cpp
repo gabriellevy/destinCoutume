@@ -4,7 +4,7 @@
 #include "thdomainesdivins.h"
 #include "caraccmdt.h"
 
-Peuple::Peuple(QString imagePortrait, DixCommandements* dixcmdt):m_Dixcmdt(dixcmdt)
+Peuple::Peuple(QString imagePortrait, Hist* hist):m_Hist(hist)
 {
     m_ImagePortrait.load(imagePortrait);
 
@@ -33,7 +33,7 @@ void Peuple::AjouterCaracs()
                 "",
                 "Temps en mois passé depuis la création du peuple",
                 MODE_AFFICHAGE::ma_Nombre);
-    m_Dixcmdt->m_Caracs.push_back(carac);
+    m_Hist->m_Caracs.push_back(carac);
     this->m_CaracsAAfficher.append("tempsEnMois");
 }
 
@@ -81,7 +81,7 @@ void Peuple::AjouterEmplacementCmdt(/*DomaineLoi* domaine*/)
     this->m_Cmdts.push_back(empl);
 
     CaracCmdt* carac = new CaracCmdt(empl);
-    this->m_Dixcmdt->m_Caracs.push_back(carac);
+    this->m_Hist->m_Caracs.push_back(carac);
 
     this->m_CaracsAAfficher.append(carac->m_DataCarac.m_Id);
 }

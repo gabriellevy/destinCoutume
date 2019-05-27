@@ -2,16 +2,17 @@
 #define PEUPLE_H
 
 #include "../destinLib/perso.h"
+#include "../destinLib/histoire.h"
 #include "cmdt.h"
 
 class Peuple : public DPerso
 {
 private:
     void AjouterCaracs();
-    DixCommandements* m_Dixcmdt = nullptr;
+    Hist* m_Hist = nullptr;
 
 public:
-    Peuple(QString imagePortrait, DixCommandements* dixcmdt);
+    Peuple(QString imagePortrait, Hist* hist);
     void AjouterEmplacementCmdt(/*DomaineLoi* domaine*/);
 
     /**
